@@ -106,6 +106,21 @@ function decorateProse(block, nodes, centered) {
     prose.append(n);
   });
 
+  // wave-final one-rule fix (logged): DA strips <cite> from authored cells, so
+  // the pull-quote byline arrives as a plain trailing <p> — rebuild the <cite>
+  // (the .text .prose blockquote cite label paint depends on it).
+  prose.querySelectorAll('blockquote').forEach((bq) => {
+    const ps = [...bq.querySelectorAll(':scope > p')];
+    const last = ps[ps.length - 1];
+    if (ps.length >= 2 && last && !last.querySelector('a, cite')
+        && last.textContent.trim().length < 90) {
+      const cite = document.createElement('cite');
+      cite.className = 'label byline';
+      cite.append(...last.childNodes);
+      last.replaceWith(cite);
+    }
+  });
+
   wrap.append(prose);
   block.replaceChildren(wrap);
 }

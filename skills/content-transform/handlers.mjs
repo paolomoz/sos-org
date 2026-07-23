@@ -178,7 +178,9 @@ function galleryUnit(figures, page, variant) {
 function inferGalleryVariant(figures, onNavy) {
   if (figures.length === 1) return 'single';
   if (figures.length === 2) return 'wide';
-  return 'centers'; // 3-col captioned grid (navy ground rides :has(.gallery.centers))
+  // 3-col captioned grid; the navy ground rides :has(.gallery.centers) — light
+  // sections opt out via the `light` sub-variant
+  return onNavy ? 'centers' : 'centers light';
 }
 
 // ---- text -------------------------------------------------------------------
@@ -502,7 +504,7 @@ export function walkSection(sectionEl, page, opts = {}) {
       figureRun = [];
       return;
     }
-    const u = galleryUnit(figureRun, page, opts.galleryVariant || inferGalleryVariant(figureRun));
+    const u = galleryUnit(figureRun, page, opts.galleryVariant || inferGalleryVariant(figureRun, opts.onNavy));
     if (u) { u.sel = secSel; units.push(u); }
     figureRun = [];
   };
@@ -542,7 +544,7 @@ export function walkSection(sectionEl, page, opts = {}) {
       // report figures) walks generically so its text survives
       flushFlow();
       const figs = qa(child, ':scope > figure');
-      const u = galleryUnit(figs, page, opts.galleryVariant || inferGalleryVariant(figs));
+      const u = galleryUnit(figs, page, opts.galleryVariant || inferGalleryVariant(figs, opts.onNavy));
       if (u) { u.sel = sub(`.${(child.getAttribute('class') || 'figure-grid').split(/\s+/)[0]}`); units.push(u); }
     } else if (child.matches(GRID_SEL) || q(child, ':scope > article.card')) {
       flushFlow();

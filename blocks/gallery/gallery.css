@@ -151,3 +151,22 @@ main .section:has(.gallery.awards) { background: var(--color-surface); }
 @media (width <= 640px) {
   .gallery .quote-frame { padding: var(--spacing-lg); }
 }
+
+/* wave-final one-rule fix (logged): the navy centers ground rides the SECTION
+   (about-skrm "presence"/"education" have no band block to paint it); light
+   figure grids opt out via the `light` sub-variant. */
+main .section:has(.gallery.centers:not(.light)) {
+  background: var(--color-accent);
+}
+
+main .section:has(.gallery.centers:not(.light)) .default-content {
+  color: var(--color-bg);
+}
+
+main .section:has(.gallery.centers:not(.light)) .default-content h2 {
+  color: var(--color-surface);
+}
+
+.gallery.centers.light .gallery-grid figcaption {
+  color: inherit;
+}

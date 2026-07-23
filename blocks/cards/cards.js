@@ -216,7 +216,10 @@ export default async function decorate(block) {
     let seenCard = false;
     rows.forEach((r) => {
       if (isCardRow(r)) { cardGroups.push(r); seenCard = true; return; }
-      if (conf.pagination && seenCard && isPaginationRow(r)) { pagination = r; return; }
+      // wave-final one-rule fix (logged): pagination detection is shape-based
+      // (>=3 links, no heading/media), not variant-gated — sos-global/videos
+      // archives paginate on the `news`/`grid` variants too.
+      if (seenCard && isPaginationRow(r)) { pagination = r; return; }
       if (seenCard && isTrailingLinkRow(r)) { tailNodes.push(...r); return; }
       if (!seenCard) headRows.push(...r); // in-table head fallback (#56)
       else tailNodes.push(...r);

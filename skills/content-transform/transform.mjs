@@ -431,7 +431,7 @@ function dispatch(section, page, state, opts) {
   }
 
   // generic fallback (article-section, listings, odd one-offs)
-  return walkSection(section, page, opts);
+  return walkSection(section, page, { ...opts, onNavy });
 }
 
 // ---- main -------------------------------------------------------------------
