@@ -2,14 +2,20 @@ import { loadArea, setConfig } from './ak.js';
 
 const hostnames = ['authorkit.dev'];
 
+// Path-prefix → lang map consumed by ak.js getLocale(): a page whose path
+// starts with the prefix gets <html lang> set to the mapped lang (root = en).
+// Covers the 9 deployed localized subtrees (localization wave).
 const locales = {
   '': { lang: 'en' },
   '/de': { lang: 'de' },
+  '/el': { lang: 'el' },
   '/es': { lang: 'es' },
   '/fr': { lang: 'fr' },
   '/hi': { lang: 'hi' },
+  '/hu': { lang: 'hu' },
+  '/it': { lang: 'it' },
   '/ja': { lang: 'ja' },
-  '/zh': { lang: 'zh' },
+  '/nl': { lang: 'nl' },
 };
 
 const linkBlocks = [
