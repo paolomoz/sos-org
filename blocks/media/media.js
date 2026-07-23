@@ -17,6 +17,59 @@ const PLAY_SVG = '<svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v
 
 const isHeading = (n) => n.matches('h1, h2, h3, h4, h5, h6');
 
+function embedUrl(href) {
+  try {
+    const u = new URL(href);
+    if (u.hostname === 'player.vimeo.com') { u.searchParams.set('autoplay', '1'); return u.toString(); }
+    if (u.hostname.endsWith('vimeo.com')) {
+      const id = u.pathname.split('/').filter(Boolean)[0];
+      if (id) return `https://player.vimeo.com/video/${id}?autoplay=1`;
+    }
+    if (u.hostname.includes('youtube.com') || u.hostname === 'youtu.be') {
+      const id = u.hostname === 'youtu.be' ? u.pathname.slice(1) : (u.searchParams.get('v') || u.pathname.split('/').pop());
+      if (id) return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    }
+  } catch (e) { /* not a recognised video URL */ }
+  return null;
+}
+
+async function loadPoster(a, href) {
+  try {
+    const u = new URL(href);
+    let poster = null;
+    if (u.hostname.includes('youtube.com') || u.hostname === 'youtu.be') {
+      const id = u.hostname === 'youtu.be' ? u.pathname.slice(1) : (u.searchParams.get('v') || u.pathname.split('/').pop());
+      if (id) poster = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    } else if (u.hostname.endsWith('vimeo.com')) {
+      const resp = await fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(href)}&width=880`);
+      if (resp.ok) poster = (await resp.json()).thumbnail_url;
+    }
+    if (poster) {
+      const probe = new Image();
+      probe.onload = () => { a.style.backgroundImage = `url("${poster}")`; a.classList.add('has-poster'); };
+      probe.src = poster;
+    }
+  } catch (e) { /* facade gradient stays — poster is enhancement */ }
+}
+
+function playInline(a, title) {
+  const src = embedUrl(a.href);
+  if (!src) return false;
+  const box = document.createElement('div');
+  box.className = 'media-embed';
+  const iframe = document.createElement('iframe');
+  iframe.src = src;
+  iframe.title = title;
+  iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; encrypted-media');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('loading', 'eager');
+  box.append(iframe);
+  a.replaceWith(box);
+  return true;
+}
+
+
+
 function cellNodes(cell) {
   const kids = [...cell.children];
   if (kids.length) return kids;
@@ -73,6 +126,12 @@ function facade(href, title, withTitleSpan) {
     t.textContent = title;
     a.append(t);
   }
+  loadPoster(a, href);
+  a.addEventListener('click', (e) => {
+    // plain left-click plays inline; modified clicks keep native link behavior
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    if (playInline(a, title)) e.preventDefault();
+  });
   return a;
 }
 
