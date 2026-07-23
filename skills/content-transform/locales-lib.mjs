@@ -51,7 +51,12 @@ export function mapImgSrc(rawSrc, page) {
     if (!p || p.endsWith('/')) return null;
     daSub = `uploads/locales-ext/${host}/${p}`;
   }
-  if (!/\.(jpe?g|png|webp|gif|svg)$/i.test(daSub)) return null; // non-image (or query-string asset)
+  if (!/\.(jpe?g|png|webp|gif)$/i.test(daSub)) {
+    // raw .svg 409s the content-bus (EN-wave finding); the locale svgs are all
+    // decorative theme icons (social links) — dropped, logged.
+    if (/\.svg$/i.test(daSub)) notes.push({ page, dropped: 'svg', src: u.href });
+    return null; // non-image (or query-string asset)
+  }
   if (!neededImages.has(daSub)) neededImages.set(daSub, { srcUrl: u.href, daSub, pages: [] });
   neededImages.get(daSub).pages.push(page);
   return `${DA_MEDIA}/${daSub.split('/').map(encSeg).join('/')}`;
