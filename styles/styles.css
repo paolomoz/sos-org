@@ -1,97 +1,188 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Science of Spirituality — sos.org EDS foundation (stardust:deploy Step 3)
+ * Tokens per DESIGN.md "The Illuminated Program" (brand-faithful refresh, 2026-07-20).
  *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * ── FONT LICENSING NOTE ──────────────────────────────────────────────────────
+ * The display stack names adobe-caslon-pro FIRST but that face is intentionally
+ * NOT shipped: Adobe Caslon Pro is Adobe-licensed (Adobe Fonts / Typekit) and
+ * may not be self-hosted. Lusitana (SIL OFL 1.1) is the site's own captured
+ * fallback and is what actually renders; activating real Caslon at go-live
+ * requires the site's Adobe Fonts kit (a licensing decision, not a code change).
+ * Jost (SIL OFL 1.1) and Lusitana are self-hosted under /styles/fonts/.
+ * See styles/fonts/LICENSING.md.
+ * ─────────────────────────────────────────────────────────────────────────────
  */
 
+/* ===== self-hosted fonts (all @font-face live here — never in head.html) ===== */
+@font-face {
+  font-family: Jost;
+  src: url('/styles/fonts/jost-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lusitana;
+  src: url('/styles/fonts/lusitana-1.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lusitana;
+  src: url('/styles/fonts/lusitana-2.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/*
+ * Metric-matched system fallbacks (fonttools-computed from the shipped woff2,
+ * frequency-weighted advance widths vs the real system faces).
+ * "Arial" override carries Jost's metrics — any `arial` in a stack renders
+ * with Jost's line box, so the body/session swap shifts nothing.
+ */
+@font-face {
+  font-family: Arial;
+  src: local('Arial');
+  size-adjust: 96.51%;
+  ascent-override: 110.87%;
+  descent-override: 38.86%;
+  line-gap-override: 0%;
+}
+
+/*
+ * "Lusitana Fallback" — local Times New Roman carrying Lusitana's metrics.
+ * The hero h1 (display face) is above-fold, so its swap must be metric-matched.
+ */
+@font-face {
+  font-family: 'Lusitana Fallback';
+  src: local('Times New Roman');
+  size-adjust: 103.70%;
+  ascent-override: 92.19%;
+  descent-override: 32.88%;
+  line-gap-override: 0%;
+}
+
+/* ===== :root token contract (hex per DESIGN.md frontmatter, brand-native names) ===== */
 :root {
+  /* fonts — adobe-caslon-pro unshipped by license (see banner); Lusitana renders */
+  --font-display: 'adobe-caslon-pro', lusitana, 'Lusitana Fallback', georgia, serif;
+  --font-body: jost, arial, sans-serif;
+  --heading-font-family: var(--font-display);
+  --body-font-family: var(--font-body);
+
+  /* type scale — one modular scale, ratio 1.25, base 18px */
+  --display: clamp(2.75rem, 5vw, 3.4375rem); /* 44 → 55px, Display (Caslon voice) */
+  --heading-xxl: 55px; /* Display max */
+  --heading-xl: 44px;
+  --heading-lg: 35px;  /* Headline (Jost 600) */
+  --heading-md: 28px;  /* Quote (Caslon voice) */
+  --heading-sm: 22px;  /* Title */
+  --body: 18px;
+  --body-sm: 15px;
+  --line-height-heading: 1.2;
+  --line-height-body: 1.65;
+
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --color-bg: #F9F4ED;      /* First Light */
+  --color-fg: #000;         /* Ink */
+  --color-accent: #043A5B;  /* Still Waters */
+  --color-gold: #E1B93B;    /* Divine Nectar */
+  --color-sandal: #6D5F2B;  /* Sandalwood */
+  --color-surface: #FFF;    /* Silence */
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 96px;
+  --section-padding: 64px; /* 48 tablet / 32 mobile — see media overrides */
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* layout */
+  --maxw: 1200px;
+  --max-width: var(--maxw);
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* corners — the Two Corners Rule: 19px controls, 12px surfaces, 50% photo tiles */
+  --radius: 19px;         /* controls: buttons, inputs */
+  --radius-surface: 12px; /* cards, media frames */
 
-  /* nav height */
-  --nav-height: 64px;
+  /* elevation — the One Shadow Rule */
+  --shadow-card: 0 10px 24px 6px rgb(0 0 0 / 6%);
+  --shadow-card-hover: 0 14px 32px 8px rgb(0 0 0 / 9%);
+
+  /* motion */
+  --ease: cubic-bezier(0.42, 0, 0, 1);
+
+  /* AuthorKit runtime compat (vendored blocks/section-metadata references these) */
+  --spacing-s: var(--spacing-sm);
+  --spacing-m: var(--spacing-md);
+  --spacing-l: var(--spacing-lg);
+  --spacing-xxl: var(--spacing-2xl);
+  --grid-size: 12;
+  --grid-container-width: var(--maxw);
+  --grid-column-width: calc(var(--grid-container-width) / var(--grid-size));
+  --color-dark: var(--color-fg);
+  --color-light: var(--color-bg);
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+@media (width <= 900px) {
+  :root { --section-padding: 48px; }
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
+@media (width <= 640px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --section-padding: 32px;
+    --heading-xl: 32px;
+    --heading-lg: 28px;
+    --heading-md: 24px;
   }
 }
 
+/* ===== document reset ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  hanging-punctuation: first;
+  scroll-behavior: smooth;
+}
+
+/*
+ * body/session font gate (CLS): first paint renders the metric-adjusted local
+ * Arial (the override @font-face above); ak.js decorateSession() adds
+ * body.session, switching to Jost with a zero-shift swap.
+ * NEVER gate display on body.appear (#40) — body stays visible.
+ */
 body {
-  /* display:none gate removed by bootstrap (#40) */
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: arial, sans-serif;
+  font-size: var(--body);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
 }
 
-header {
-  height: var(--nav-height);
+body.session { font-family: var(--font-body); }
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-accent);
 }
 
-header .header,
-footer .footer {
-  visibility: hidden;
+/* EDS media pipeline emits width/height attrs — height:auto is mandatory (#36) */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
+button {
+  font: inherit;
+  cursor: pointer;
 }
 
 h1,
@@ -100,222 +191,232 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
+  margin: 0;
+  line-height: var(--line-height-heading);
+  text-wrap: balance;
+  color: var(--color-accent);
+}
+
+/* Display voice — serif reserved for reverence; metric-matched fallback, no session gate */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--display);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+h2 {
   font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
+  font-size: var(--heading-lg);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
-
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+h3 {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  line-height: 1.3;
 }
 
-code,
-pre {
-  font-size: var(--body-font-size-s);
+h4 {
+  font-weight: 600;
+  font-size: var(--body);
 }
 
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
+p {
+  margin: 0 0 var(--spacing-md);
+  text-wrap: pretty;
 }
 
-main > div {
-  margin: 40px 16px;
+a { color: var(--color-accent); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-input,
-textarea,
-select,
-button {
-  font: inherit;
+/* gold focus on navy grounds */
+main .section.dark :focus-visible,
+main .band :focus-visible,
+.on-navy :focus-visible,
+.on-navy:focus-visible { outline-color: var(--color-gold); }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: var(--spacing-lg);
 }
 
-/* links */
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-  overflow-wrap: break-word;
+/* ===== EDS section scaffold ===== */
+main .section {
+  display: block;
+  position: relative;
+  padding-block: var(--section-padding);
 }
 
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
+main .section > .default-content,
+main .section > .block-content { display: block; }
+
+main > div,
+.has-template,
+div[data-status] { display: none; }
+
+/* emptySectionCollapse=true — the consumed metadata block leaves an empty section */
+main .section:empty { display: none; }
+
+/*
+ * ===== the Silken Thread (site signature) =====
+ * "We are knit together by the silken thread of the Divine."
+ * A 1px Divine Nectar thread descends through each section's top padding,
+ * ending in a 7px gold node just above the content; the footer ends the page
+ * with a circled-dot knot. Whitespace-only — never crosses content.
+ * Scoped to the EDS section DOM: any section PRECEDED by a non-empty section
+ * carries the thread — this skips the first visible section (the hero) even
+ * when an empty, collapsed metadata section sits before it.
+ */
+main .section:not(:empty) ~ .section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-0.5px);
+  width: 1px;
+  height: calc(var(--section-padding) - 24px);
+  background: linear-gradient(to bottom, rgb(225 185 59 / 90%), rgb(225 185 59 / 45%));
 }
 
-/* buttons */
-p.button-wrapper {
-  margin: 12px 0;
+main .section:not(:empty) ~ .section::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--section-padding) - 24px);
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, 0);
+  background: var(--color-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgb(225 185 59 / 22%);
 }
 
-a.button:any-link,
-button.button {
-  box-sizing: border-box;
+/* the knot — thread's end (class set by postlcp.js on fragment injection) */
+footer.footer { position: relative; }
+
+footer.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-0.5px);
+  width: 1px;
+  height: calc(var(--section-padding) - 30px);
+  background: linear-gradient(to bottom, rgb(225 185 59 / 90%), rgb(225 185 59 / 55%));
+}
+
+footer.footer::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--section-padding) - 30px);
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  transform: translate(-50%, 0);
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-gold) 0 3px, transparent 3.5px);
+}
+
+/*
+ * ===== global button system =====
+ * AuthorKit decorator: strong>a → .btn.btn-primary, em>a → .btn.btn-secondary,
+ * 2+ buttons in one parent → parent .btn-group.
+ * font-family inherits from body so buttons ride the session font gate.
+ * No gradient text, no side stripes (DESIGN.md anti-references).
+ */
+a.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
-  margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
+  gap: 10px;
+  min-height: 44px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
+/* the Golden Fill Rule: gold is a fill behind navy — never carries light text */
+a.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-accent);
 }
 
-a.button.primary,
-button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+a.btn-primary:hover {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  transform: translateY(-1px);
 }
 
-a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+a.btn-secondary {
+  background: var(--color-accent);
+  color: var(--color-surface);
 }
 
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+a.btn-secondary:hover {
+  background: #0A5178; /* Still Waters, one step brighter (canon hover) */
+  transform: translateY(-1px);
 }
 
-a.button.secondary,
-button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
+/* surface-aware: on navy sections/blocks a navy secondary would vanish (#41) */
+main .band a.btn-secondary,
+main .section.dark a.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-accent);
 }
 
-a.button.secondary:hover,
-a.button.secondary:focus-visible,
-button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+main .band a.btn-secondary:hover,
+main .section.dark a.btn-secondary:hover {
+  background: var(--color-gold);
+  color: var(--color-accent);
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-lg);
 }
 
-/* high-impact call-to-action */
-a.button.accent,
-button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+/*
+ * ===== static-chrome height reservation (#81) =====
+ * postlcp.js injects fragments/header.html AFTER first paint; reserving the
+ * fragment's rendered height on the bare <header> prevents the hero jumping
+ * down when the chrome lands (the measured-CLS class of failure).
+ * Values measured from the rendered fragment (see conversion log).
+ */
+header {
+  min-height: 173px; /* utility 44 + masthead 16 + logo 96 + 16 + 1px border */
+  background: var(--color-bg);
 }
 
-a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+@media (width <= 900px) {
+  /* burger masthead: utility 44 + 16 + logo 72 + 16 + 1px border */
+  header { min-height: 149px; }
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-}
-
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
-
-.icon img {
-  height: 100%;
-  width: 100%;
-}
-
-/* sections */
-main > .section {
-  margin: 40px 0;
-}
-
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-}
-
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
-}
 
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+  html { scroll-behavior: auto; }
 }

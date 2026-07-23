@@ -1,0 +1,3 @@
+# vendored AuthorKit runtime blocks (deploy skill: treat runtime as vendored)
+blocks/fragment/
+blocks/section-metadata/

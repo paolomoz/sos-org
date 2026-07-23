@@ -1,0 +1,90 @@
+<style>
+  /* sos.org chrome — extracted from stardust/canon/{footer.html,canon.css} (approved 2026-07-22).
+     Injected inert via postlcp.js innerHTML into <footer class="footer">.
+     The footer's OWN box styles (navy ground, section padding) live on footer.footer (#31);
+     the Silken Thread knot pseudo-elements are in /styles/styles.css. */
+  footer.footer {
+    display: block;
+    background: var(--color-accent);
+    color: var(--color-surface);
+    padding-block: var(--section-padding);
+  }
+  footer.footer .footer-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl); margin-bottom: var(--spacing-xl);
+  }
+  footer.footer h3 {
+    font-size: var(--body); font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--color-gold); margin: 0 0 var(--spacing-md);
+    line-height: var(--line-height-heading);
+  }
+  footer.footer ul { list-style: none; margin: 0; padding: 0; }
+  footer.footer li { margin-bottom: 2px; }
+  footer.footer a { color: var(--color-surface); text-decoration: none; display: inline-flex; align-items: center; min-height: 36px; }
+  footer.footer a:hover { color: var(--color-gold); text-decoration: underline; text-underline-offset: 3px; }
+  footer.footer :focus-visible { outline-color: var(--color-gold); }
+  footer.footer .footer-bottom {
+    border-top: 1px solid rgb(225 185 59 / 35%); padding-top: var(--spacing-lg);
+    display: flex; justify-content: space-between; gap: var(--spacing-lg);
+    flex-wrap: wrap; font-size: var(--body-sm);
+  }
+  footer.footer .footer-bottom ul { display: flex; gap: var(--spacing-lg); flex-wrap: wrap; }
+  footer.footer .footer-brand {
+    color: var(--color-gold); font-weight: 600; font-size: 14px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    display: inline-flex; align-items: center;
+  }
+
+  @media (width <= 640px) {
+    footer.footer .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <h3>Meditation</h3>
+      <ul>
+        <li><a href="/spirituality/spiritual-growth">Spiritual Growth</a></li>
+        <li><a href="/benefits-of-a-spiritual-guide">Benefits of a Spiritual Guide</a></li>
+        <li><a href="/preventative-health-through-vegetarianism-and-meditation">Health Benefits</a></li>
+        <li><a href="/healthy-living">Healthy Living</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="/about-us">Our Organization</a></li>
+        <li><a href="/meditation-center">International Meditation Center</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/videos">Videos</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/sant-rajinder-singh">Spiritual Guide</a></li>
+        <li><a href="/find-programs">Find Programs</a></li>
+        <li><a href="/connect">Connect</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>More</h3>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms-of-use">Terms of Use</a></li>
+        <li><a href="https://www.facebook.com/SOS.Global/">Facebook</a></li>
+        <li><a href="https://www.instagram.com/science.of.spirituality/">Instagram</a></li>
+        <li><a href="https://www.youtube.com/user/SantRajinderSingh">Youtube</a></li>
+        <li><a href="https://twitter.com/sosmeditate">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <ul>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/terms-of-use">Terms of Use</a></li>
+    </ul>
+    <span class="footer-brand">Science of Spirituality</span>
+  </div>
+</div>
