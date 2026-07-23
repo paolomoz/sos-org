@@ -6,6 +6,7 @@
  *   prose    — article prose measure (72ch): optional kicker, headline, running
  *              copy, gold-rule blockquotes (spiritual-growth archetype).
  *   centered — centered hook paragraph(s), 62ch (meditation-learn "opening").
+ *   split    — media + prose split (5fr/7fr; .right inverts) — migrated split-media sections.
  * Decode tier: reconstructive.
  *
  * Classification is by content, never index (#48/#51): the eyebrow is the short
@@ -106,9 +107,40 @@ function decorateProse(block, nodes, centered) {
   block.replaceChildren(wrap);
 }
 
+
+function decorateSplit(block, nodes) {
+  const wrap = document.createElement('div');
+  wrap.className = 'wrap';
+  const grid = document.createElement('div');
+  grid.className = 'split-grid';
+  const prose = document.createElement('div');
+  prose.className = 'prose';
+  let pic = null;
+  nodes.forEach((n) => {
+    if (!pic) {
+      const found = n.matches('picture, img') ? n : n.querySelector('picture, img');
+      if (found) {
+        pic = found.closest('picture') || found;
+        if (n !== pic && n.contains(pic)) pic.remove();
+        if (n === pic) return;
+      }
+    }
+    if (n === pic) return;
+    if (n.textContent.trim() || n.querySelector('a')) {
+      if (isHeading(n)) n.classList.add('title');
+      prose.append(n);
+    }
+  });
+  if (pic) grid.append(pic);
+  grid.append(prose);
+  wrap.append(grid);
+  block.replaceChildren(wrap);
+}
+
 export default async function decorate(block) {
   const nodes = collectNodes(block);
   if (!nodes.length) return;
   if (block.classList.contains('intro')) decorateIntro(block, nodes);
+  else if (block.classList.contains('split')) decorateSplit(block, nodes);
   else decorateProse(block, nodes, block.classList.contains('centered'));
 }

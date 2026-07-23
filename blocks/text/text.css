@@ -111,3 +111,20 @@
   margin-inline: auto;
   font-size: 20px;
 }
+
+/* prose blockquote attribution — label paint (fix for spiritual-growth ROLE SWAPs; see conversion log) */
+.text .prose blockquote cite {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  font-style: normal;
+}
+
+/* split variant — media + prose split per prototype spec */
+.text.split .split-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--spacing-2xl); align-items: start; }
+.text.split.right .split-grid { grid-template-columns: 7fr 5fr; }
+.text.split.right .split-grid > picture, .text.split.right .split-grid > img { order: 2; }
+.text.split img { border-radius: var(--radius-surface); }
+@media (width <= 900px) { .text.split .split-grid, .text.split.right .split-grid { grid-template-columns: 1fr; } .text.split.right .split-grid > picture, .text.split.right .split-grid > img { order: 0; } }
