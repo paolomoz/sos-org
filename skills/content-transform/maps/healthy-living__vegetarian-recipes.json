@@ -1,0 +1,31 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"maple-mustard-dressing\"] .prose",
+  "[data-section=\"maple-mustard-dressing\"] .prose",
+  "[data-section=\"watermelon-feta-mint-salad\"] .prose",
+  "[data-section=\"watermelon-feta-mint-salad\"] .prose",
+  "[data-section=\"lemonade-mint-maple\"] .prose",
+  "[data-section=\"lemonade-mint-maple\"] .prose",
+  "[data-section=\"dalgona-coffee\"] .prose",
+  "[data-section=\"dalgona-coffee\"] .prose",
+  "[data-section=\"edamame-pea-soup\"] .prose",
+  "[data-section=\"edamame-pea-soup\"] .prose",
+  "[data-section=\"chana-masala\"] .prose",
+  "[data-section=\"chana-masala\"] .prose",
+  "[data-section=\"skewered-vegetables-teriyaki\"] .prose",
+  "[data-section=\"skewered-vegetables-teriyaki\"] .prose",
+  "[data-section=\"fettuccine-alfredo-vegan\"] .prose",
+  "[data-section=\"fettuccine-alfredo-vegan\"] .prose",
+  "[data-section=\"tex-mex-torte\"] .prose",
+  "[data-section=\"tex-mex-torte\"] .prose",
+  "[data-section=\"orzo-with-peas\"] .prose",
+  "[data-section=\"orzo-with-peas\"] .prose",
+  "[data-section=\"minestrone-soup\"] .prose",
+  "[data-section=\"minestrone-soup\"] .prose",
+  "[data-section=\"chocolate-banana-almond-smoothie\"] .prose",
+  "[data-section=\"chocolate-banana-almond-smoothie\"] .prose"
+ ]
+}

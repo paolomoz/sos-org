@@ -1,0 +1,10 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"release\"] .prose",
+  "[data-section=\"release\"] .prose",
+  "[data-section=\"release\"] .prose"
+ ]
+}

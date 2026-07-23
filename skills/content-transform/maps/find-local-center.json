@@ -1,0 +1,13 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"finder\"] .prose",
+  "[data-section=\"hq-usa\"] .prose",
+  "[data-section=\"hq-usa\"] .prose",
+  "[data-section=\"hq-india\"] .prose",
+  "[data-section=\"hq-india\"] .prose"
+ ]
+}

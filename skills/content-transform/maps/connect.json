@@ -1,0 +1,14 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "form": [
+  "[data-section=\"mailing-list-form\"]"
+ ],
+ "cards": [
+  "[data-section=\"find-center\"] .addr-grid"
+ ],
+ "text": [
+  "[data-section=\"find-center\"] .wrap > p"
+ ]
+}

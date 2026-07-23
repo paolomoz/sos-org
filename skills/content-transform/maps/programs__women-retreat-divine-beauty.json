@@ -1,0 +1,24 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"event-schedule\"]",
+  "[data-section=\"about-the-event\"]",
+  "[data-section=\"keynote-speaker\"]",
+  "[data-section=\"sponsors\"]",
+  "[data-section=\"sponsors\"] .wrap > p",
+  "[data-section=\"sponsors\"] .wrap > p",
+  "[data-section=\"sponsors\"] .wrap > p",
+  "[data-section=\"gallery\"] .wrap > p"
+ ],
+ "cards": [
+  "[data-section=\"breakout-sessions\"] .card-grid"
+ ],
+ "media": [
+  "[data-section=\"gallery\"] figure:has(a)"
+ ],
+ "band": [
+  "[data-section=\"event-venue\"]"
+ ]
+}

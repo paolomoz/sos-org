@@ -1,0 +1,31 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"restores-vision\"] .init-row",
+  "[data-section=\"selfless-service-initiative\"]",
+  "[data-section=\"groundwork\"] .init-row",
+  "[data-section=\"doctors-dictum\"]",
+  "[data-section=\"doctors-dictum\"] .narrow",
+  "[data-section=\"patients-perspective\"]",
+  "[data-section=\"core-inspiration\"] .init-row",
+  "[data-section=\"about-us\"] .init-row",
+  "[data-section=\"contact\"]"
+ ],
+ "quote": [
+  "[data-section=\"doctors-dictum\"] blockquote",
+  "[data-section=\"doctors-dictum\"] blockquote",
+  "[data-section=\"patients-perspective\"] blockquote",
+  "[data-section=\"patients-perspective\"] blockquote",
+  "[data-section=\"patients-perspective\"] blockquote",
+  "[data-section=\"patients-perspective\"] blockquote",
+  "[data-section=\"closing-quote\"] blockquote"
+ ],
+ "media": [
+  "[data-section=\"selfless-service-video\"]"
+ ],
+ "band": [
+  "[data-section=\"contribute\"]"
+ ]
+}

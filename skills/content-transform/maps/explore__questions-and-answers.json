@@ -1,0 +1,19 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "media": [
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)",
+  "[data-section=\"qa-videos\"] figure:has(a)"
+ ],
+ "gallery": [
+  "[data-section=\"qa-videos\"]"
+ ]
+}

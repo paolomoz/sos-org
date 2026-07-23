@@ -1,0 +1,20 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "quote": [
+  "[data-section=\"first-step-quote\"] blockquote"
+ ],
+ "media": [
+  "[data-section=\"featured-video\"]"
+ ],
+ "text": [
+  "[data-section=\"road-to-awakening\"]",
+  "[data-section=\"why-meditation\"]",
+  "[data-section=\"new-awareness\"]",
+  "[data-section=\"learning-the-art\"]"
+ ],
+ "band": [
+  "[data-section=\"personal-awakening\"]"
+ ]
+}

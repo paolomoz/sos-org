@@ -1,0 +1,31 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "media": [
+  "[data-section=\"live-broadcast\"] figure:has(a)",
+  "[data-section=\"featured-videos\"] figure:has(a)",
+  "[data-section=\"featured-videos\"] figure:has(a)",
+  "[data-section=\"featured-videos\"] figure:has(a)"
+ ],
+ "text": [
+  "[data-section=\"translation\"] .prose",
+  "[data-section=\"global-meditation\"] .prose",
+  "[data-section=\"global-meditation\"] .prose",
+  "[data-section=\"master\"] .prose",
+  "[data-section=\"master\"] .prose",
+  "[data-section=\"sos-meditation\"] .prose",
+  "[data-section=\"sos-meditation\"] .prose",
+  "[data-section=\"inner-strength\"] .prose",
+  "[data-section=\"inner-strength\"] .prose",
+  "[data-section=\"contentment\"] .prose",
+  "[data-section=\"contentment\"] .prose",
+  "[data-section=\"forgiveness\"] .prose",
+  "[data-section=\"forgiveness\"] .prose",
+  "[data-section=\"ocean-of-love\"] .prose",
+  "[data-section=\"ocean-of-love\"] .prose",
+  "[data-section=\"featured-videos\"] .prose",
+  "[data-section=\"featured-videos\"] .prose",
+  "[data-section=\"featured-videos\"] .prose"
+ ]
+}

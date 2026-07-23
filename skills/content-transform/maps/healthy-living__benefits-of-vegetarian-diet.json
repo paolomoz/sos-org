@@ -1,0 +1,26 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"veggie-fest\"] .prose",
+  "[data-section=\"featured-recipe\"] .prose",
+  "[data-section=\"featured-recipe\"] .prose",
+  "[data-section=\"article-choose-the-right-way\"] .prose",
+  "[data-section=\"article-choose-the-right-way\"] .prose",
+  "[data-section=\"article-year-of-the-vegan\"] .prose",
+  "[data-section=\"article-year-of-the-vegan\"] .prose",
+  "[data-section=\"article-why-vegetarian\"] .prose",
+  "[data-section=\"article-why-vegetarian\"] .prose",
+  "[data-section=\"veggie-fest-highlights\"] .prose",
+  "[data-section=\"the-light-illumines-all-life\"] .prose",
+  "[data-section=\"benefits-of-vegetarian-way-of-life\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"veggie-fest-highlights\"] figure:has(a)",
+  "[data-section=\"veggie-fest-highlights\"] figure:has(a)",
+  "[data-section=\"veggie-fest-highlights\"] figure:has(a)",
+  "[data-section=\"benefits-of-vegetarian-way-of-life\"] figure:has(a)"
+ ]
+}

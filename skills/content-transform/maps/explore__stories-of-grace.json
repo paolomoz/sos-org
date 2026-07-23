@@ -1,0 +1,20 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"my-near-death-experience\"] .prose",
+  "[data-section=\"africa-constant-blessings\"] .prose",
+  "[data-section=\"his-guiding-hand\"] .prose",
+  "[data-section=\"the-divine-rescue\"] .prose",
+  "[data-section=\"overflowing-with-light\"] .prose",
+  "[data-section=\"more-stories\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"my-near-death-experience\"] figure:has(a)",
+  "[data-section=\"africa-constant-blessings\"] figure:has(a)",
+  "[data-section=\"his-guiding-hand\"] figure:has(a)",
+  "[data-section=\"the-divine-rescue\"] figure:has(a)",
+  "[data-section=\"overflowing-with-light\"] figure:has(a)"
+ ]
+}

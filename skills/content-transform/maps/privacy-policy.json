@@ -1,0 +1,8 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"policy-body\"] .prose"
+ ]
+}

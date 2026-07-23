@@ -1,0 +1,15 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"opening\"]",
+  "[data-section=\"seven-day-challenge\"]"
+ ],
+ "cards": [
+  "[data-section=\"challenges\"] .card-grid"
+ ],
+ "band": [
+  "[data-section=\"meditation-classes\"]"
+ ]
+}

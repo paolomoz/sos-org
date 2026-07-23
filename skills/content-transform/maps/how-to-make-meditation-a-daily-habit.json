@@ -1,0 +1,29 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"start-small-and-stay-consistent\"] .prose",
+  "[data-section=\"start-small-and-stay-consistent\"] .prose",
+  "[data-section=\"choose-a-set-time\"] .prose",
+  "[data-section=\"create-a-dedicated-space\"] .prose",
+  "[data-section=\"create-a-dedicated-space\"] .prose",
+  "[data-section=\"set-a-clear-intention\"] .prose",
+  "[data-section=\"set-a-clear-intention\"] .prose",
+  "[data-section=\"be-kind-to-yourself\"] .prose",
+  "[data-section=\"be-kind-to-yourself\"] .prose",
+  "[data-section=\"track-your-progress\"] .prose",
+  "[data-section=\"track-your-progress\"] .prose",
+  "[data-section=\"be-patient-habits-take-time\"] .prose",
+  "[data-section=\"be-patient-habits-take-time\"] .prose",
+  "[data-section=\"learn-from-a-spiritual-teacher-or-tradition\"] .prose",
+  "[data-section=\"learn-from-a-spiritual-teacher-or-tradition\"] .prose",
+  "[data-section=\"final-thoughts\"] .prose",
+  "[data-section=\"final-thoughts\"] .prose",
+  "[data-section=\"frequently-asked-questions\"] .prose",
+  "[data-section=\"our-workshop-offerings\"] .prose",
+  "[data-section=\"our-workshop-offerings\"] .prose",
+  "[data-section=\"our-workshop-offerings\"] .prose",
+  "[data-section=\"our-workshop-offerings\"] .prose"
+ ]
+}

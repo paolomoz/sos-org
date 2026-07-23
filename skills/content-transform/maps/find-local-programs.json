@@ -1,0 +1,8 @@
+{
+ "page-head": [
+  "[data-section=\"page-title\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose"
+ ]
+}

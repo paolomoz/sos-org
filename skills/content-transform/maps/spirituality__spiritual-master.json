@@ -1,0 +1,21 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"need-for-a-teacher\"] .prose",
+  "[data-section=\"need-for-a-teacher\"] .prose",
+  "[data-section=\"learning-from-a-master\"] .prose",
+  "[data-section=\"what-does-the-master-do\"] .prose",
+  "[data-section=\"what-does-the-master-do\"] .wrap > p",
+  "[data-section=\"master-for-our-times\"] .prose",
+  "[data-section=\"master-for-our-times\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"need-for-a-teacher\"] figure:has(a)",
+  "[data-section=\"what-does-the-master-do\"] figure:has(a)"
+ ],
+ "related-links": [
+  "[data-section=\"related-links\"]"
+ ]
+}

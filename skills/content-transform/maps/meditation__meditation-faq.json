@@ -1,0 +1,17 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "faq": [
+  "[data-section=\"faq\"]"
+ ],
+ "gallery": [
+  "[data-section=\"meditation-quotes\"] .fig-grid"
+ ],
+ "band": [
+  "[data-section=\"first-step\"]"
+ ],
+ "cards": [
+  "[data-section=\"want-to-learn-more\"] .card-grid"
+ ]
+}

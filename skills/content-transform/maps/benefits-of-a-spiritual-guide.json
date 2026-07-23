@@ -1,0 +1,11 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"guide-intro\"]"
+ ],
+ "cards": [
+  "[data-section=\"learn-more\"] .card-grid"
+ ]
+}

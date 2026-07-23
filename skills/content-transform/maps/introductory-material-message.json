@@ -1,0 +1,9 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"go-back\"] .prose",
+  "[data-section=\"form\"] .prose"
+ ]
+}

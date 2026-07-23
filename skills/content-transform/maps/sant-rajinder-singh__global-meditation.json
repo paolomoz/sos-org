@@ -1,0 +1,29 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"program-details\"] .prose",
+  "[data-section=\"master\"] .prose",
+  "[data-section=\"master\"] .prose",
+  "[data-section=\"audiobook\"] .prose",
+  "[data-section=\"audiobook\"] .prose",
+  "[data-section=\"sos-meditation\"] .prose",
+  "[data-section=\"sos-meditation\"] .prose",
+  "[data-section=\"inner-strength\"] .prose",
+  "[data-section=\"want-to-learn-more\"] .prose",
+  "[data-section=\"want-to-learn-more\"] .prose",
+  "[data-section=\"want-to-learn-more\"] .prose",
+  "[data-section=\"want-to-learn-more\"] .prose",
+  "[data-section=\"featured-videos\"] .prose",
+  "[data-section=\"featured-videos\"] .prose",
+  "[data-section=\"featured-videos\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"featured-videos\"] figure:has(a)",
+  "[data-section=\"featured-videos\"] figure:has(a)",
+  "[data-section=\"featured-videos\"] figure:has(a)"
+ ]
+}

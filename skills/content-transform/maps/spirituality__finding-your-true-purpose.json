@@ -1,0 +1,21 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"our-purpose\"] .prose",
+  "[data-section=\"soul-exists\"] .prose",
+  "[data-section=\"science-of-spirituality\"] .prose",
+  "[data-section=\"experience-our-soul\"] .prose",
+  "[data-section=\"meditation-helps\"] .prose",
+  "[data-section=\"personal-transformation\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"intro\"] figure:has(a)",
+  "[data-section=\"our-purpose\"] figure:has(a)",
+  "[data-section=\"science-of-spirituality\"] figure:has(a)",
+  "[data-section=\"experience-our-soul\"] figure:has(a)",
+  "[data-section=\"personal-transformation\"] figure:has(a)"
+ ]
+}

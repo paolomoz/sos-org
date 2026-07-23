@@ -1,0 +1,19 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"what-is\"] .prose",
+  "[data-section=\"become-aware\"] .prose",
+  "[data-section=\"become-aware\"] .wrap > p",
+  "[data-section=\"what-happens\"] .prose",
+  "[data-section=\"new-dawn\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"become-aware\"] figure:has(a)",
+  "[data-section=\"what-happens\"] figure:has(a)"
+ ],
+ "related-links": [
+  "[data-section=\"related-links\"]"
+ ]
+}

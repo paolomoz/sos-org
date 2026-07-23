@@ -1,0 +1,11 @@
+{
+ "page-head": [
+  "[data-section=\"page-title\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose"
+ ],
+ "cards": [
+  "[data-section=\"events-list\"]"
+ ]
+}

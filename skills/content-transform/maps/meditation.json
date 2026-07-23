@@ -1,0 +1,26 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"what-is\"]",
+  "[data-section=\"benefits\"]",
+  "[data-section=\"can-meditation-help\"]",
+  "[data-section=\"how-can-meditation-help\"]",
+  "[data-section=\"transformation\"]",
+  "[data-section=\"how-do-i-meditate\"]",
+  "[data-section=\"start-practice\"]",
+  "[data-section=\"improve-practice\"]",
+  "[data-section=\"need-a-teacher\"]",
+  "[data-section=\"find-a-teacher\"]"
+ ],
+ "band": [
+  "[data-section=\"classes-webinars\"]"
+ ],
+ "cards": [
+  "[data-section=\"classes-webinars\"] .card-grid"
+ ],
+ "related-links": [
+  "[data-section=\"related-links\"]"
+ ]
+}

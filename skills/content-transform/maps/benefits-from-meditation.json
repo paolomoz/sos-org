@@ -1,0 +1,29 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"what-is-meditation\"] .prose",
+  "[data-section=\"what-is-sos-meditation\"] .prose",
+  "[data-section=\"what-happens-during-sos-meditation\"] .prose",
+  "[data-section=\"benefits-of-meditation\"] .prose",
+  "[data-section=\"meditation-heals-the-body\"] .prose",
+  "[data-section=\"meditation-heals-the-body\"] .prose",
+  "[data-section=\"meditation-heals-the-body\"] .prose",
+  "[data-section=\"meditation-heals-the-body\"] .prose",
+  "[data-section=\"meditation-heals-the-body\"] .prose",
+  "[data-section=\"meditation-heals-the-mind\"] .prose",
+  "[data-section=\"meditation-heals-the-emotions\"] .prose",
+  "[data-section=\"meditation-heals-the-spirit\"] .prose",
+  "[data-section=\"meditation-heals-the-spirit\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"what-is-meditation\"] figure:has(a)",
+  "[data-section=\"benefits-of-meditation\"] figure:has(a)",
+  "[data-section=\"benefits-of-meditation\"] figure:has(a)",
+  "[data-section=\"meditation-heals-the-spirit\"] figure:has(a)"
+ ],
+ "related-links": [
+  "[data-section=\"related-links\"]"
+ ]
+}

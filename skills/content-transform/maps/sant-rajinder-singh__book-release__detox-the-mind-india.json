@@ -1,0 +1,9 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"live-broadcast\"] .prose",
+  "[data-section=\"live-broadcast\"] .prose"
+ ]
+}

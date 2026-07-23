@@ -1,0 +1,170 @@
+{
+ "note": "wave-final rehosted externals (qna/veggiefest/find-local-centers/habits)",
+ "files": [
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_ControlEgo.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_controlego.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_controlego.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_Gratitude.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_gratitude.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_gratitude.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_LearntoForgive.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_learntoforgive.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_learntoforgive.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_OvercomeAnger.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_overcomeanger.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_overcomeanger.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_OvercomeEgo.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_overcomeego.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_overcomeego.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_HelpingFactors_OvercomeVices.jpg",
+   "subpath": "uploads/qna/qnavideo_helpingfactors_overcomevices.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_helpingfactors_overcomevices.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_LivingthePath_DealwithSadness.jpg",
+   "subpath": "uploads/qna/qnavideo_livingthepath_dealwithsadness.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_livingthepath_dealwithsadness.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_LivingthePath_DevelopLove.jpg",
+   "subpath": "uploads/qna/qnavideo_livingthepath_developlove.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_livingthepath_developlove.jpg"
+  },
+  {
+   "source": "https://cdn.jsdelivr.net/gh/professionalsixoneg/sosqna@master/QnAVideo_LivingthePath_SpiritualRejuvenation.jpg",
+   "subpath": "uploads/qna/qnavideo_livingthepath_spiritualrejuvenation.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/qna/qnavideo_livingthepath_spiritualrejuvenation.jpg"
+  },
+  {
+   "source": "https://www.sos.org/assets/imgs/find-local-centers/Find%20A%20Location%20-%20Desktop%20Banner.png",
+   "subpath": "uploads/imgs/find-local-centers/find-a-location-desktop-banner.png",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/imgs/find-local-centers/find-a-location-desktop-banner.png"
+  },
+  {
+   "source": "https://www.sos.org/assets/imgs/find-local-centers/center-india.png",
+   "subpath": "uploads/imgs/find-local-centers/center-india.png",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/imgs/find-local-centers/center-india.png"
+  },
+  {
+   "source": "https://www.sos.org/assets/imgs/find-local-centers/center-us.png",
+   "subpath": "uploads/imgs/find-local-centers/center-us.png",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/imgs/find-local-centers/center-us.png"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2018/05/Chocolate-Banana-Almond-Smoothie.jpg",
+   "subpath": "uploads/veggiefest/chocolate-banana-almond-smoothie.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/chocolate-banana-almond-smoothie.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2018/10/minestrone-soup-recipe.jpg",
+   "subpath": "uploads/veggiefest/minestrone-soup-recipe.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/minestrone-soup-recipe.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2018/12/Orzo-with-peas-image.jpg",
+   "subpath": "uploads/veggiefest/orzo-with-peas-image.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/orzo-with-peas-image.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2019/01/enchilada-pie-recipe.jpg",
+   "subpath": "uploads/veggiefest/enchilada-pie-recipe.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/enchilada-pie-recipe.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2019/02/Fettucine-Alfredo-1.jpg",
+   "subpath": "uploads/veggiefest/fettucine-alfredo-1.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/fettucine-alfredo-1.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2019/04/skewered-Vegetable-Teriyaki.jpg",
+   "subpath": "uploads/veggiefest/skewered-vegetable-teriyaki.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/skewered-vegetable-teriyaki.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2019/06/Chana-Masala.jpg",
+   "subpath": "uploads/veggiefest/chana-masala.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/chana-masala.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2020/02/Pea-Edamame-Soup-wb.jpg",
+   "subpath": "uploads/veggiefest/pea-edamame-soup-wb.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/pea-edamame-soup-wb.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2020/05/Dalgona-Coffee.jpg",
+   "subpath": "uploads/veggiefest/dalgona-coffee.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/dalgona-coffee.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2020/07/Dairy-free-Feta-Watermelon-Mint-Salad-W.jpg",
+   "subpath": "uploads/veggiefest/dairy-free-feta-watermelon-mint-salad-w.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/dairy-free-feta-watermelon-mint-salad-w.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2020/07/Honey-Mustard-Salad-Dressing-W.jpg",
+   "subpath": "uploads/veggiefest/honey-mustard-salad-dressing-w.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/honey-mustard-salad-dressing-w.jpg"
+  },
+  {
+   "source": "https://veggiefestchicago.org/wp-content/uploads/2020/07/Lemonade-With-Maple-W.jpg",
+   "subpath": "uploads/veggiefest/lemonade-with-maple-w.jpg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/veggiefest/lemonade-with-maple-w.jpg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_01.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_01.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_01.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_02.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_02.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_02.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_03.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_03.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_03.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_04.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_04.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_04.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_05.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_05.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_05.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_06.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_06.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_06.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_07.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_07.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_07.jpeg"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_08.png",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_08.png",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_08.png"
+  },
+  {
+   "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_09.jpeg",
+   "subpath": "uploads/meditation-series/imgs/habits/meditationpage_09.jpeg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_09.jpeg"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"opening\"]",
+  "[data-section=\"why-this-workshop\"] .prose",
+  "[data-section=\"about-us\"] .about-grid",
+  "[data-section=\"contact\"]"
+ ],
+ "band": [
+  "[data-section=\"schedule\"]"
+ ],
+ "quote": [
+  "[data-section=\"master-quote\"] .quote-band"
+ ],
+ "media": [
+  "[data-section=\"master-quote\"] figure"
+ ],
+ "cards": [
+  "[data-section=\"interesting-reads\"] .card-grid",
+  "[data-section=\"other-workshops\"] .card-grid",
+  "[data-section=\"testimonials\"] .testimonial-grid"
+ ]
+}

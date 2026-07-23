@@ -1,0 +1,13 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"event-discover-your-inner-sanctuary\"] .prose",
+  "[data-section=\"event-spiritual-talk-in-english\"] .prose",
+  "[data-section=\"event-calm-your-mind\"] .prose",
+  "[data-section=\"event-discovering-stillness-and-joy\"] .prose",
+  "[data-section=\"event-experience-the-treasures-within\"] .prose",
+  "[data-section=\"event-from-stress-to-harmony\"] .prose"
+ ]
+}

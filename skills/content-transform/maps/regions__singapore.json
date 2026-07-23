@@ -1,0 +1,21 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"welcome\"] .prose",
+  "[data-section=\"centres\"] .prose",
+  "[data-section=\"upcoming-events\"] .prose",
+  "[data-section=\"about-us\"] .prose",
+  "[data-section=\"about-us\"] .prose",
+  "[data-section=\"about-us\"] .prose",
+  "[data-section=\"our-blog\"] .prose",
+  "[data-section=\"our-blog\"] .prose",
+  "[data-section=\"our-blog\"] .prose",
+  "[data-section=\"our-blog\"] .prose",
+  "[data-section=\"contact-us\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"about-us\"] figure:has(a)"
+ ]
+}

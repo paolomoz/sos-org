@@ -1,0 +1,24 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"skrm-intro\"] .split",
+  "[data-section=\"programs-talks\"] .split",
+  "[data-section=\"conferences\"] .split",
+  "[data-section=\"conferences\"] .split"
+ ],
+ "gallery": [
+  "[data-section=\"presence\"] .centers-grid",
+  "[data-section=\"programs-talks\"] .figure-grid",
+  "[data-section=\"conferences\"] .figure-grid",
+  "[data-section=\"service-outreach\"] .figure-grid",
+  "[data-section=\"education\"] .centers-grid"
+ ],
+ "quote": [
+  "[data-section=\"quote\"] blockquote"
+ ],
+ "band": [
+  "[data-section=\"contact-hq\"]"
+ ]
+}

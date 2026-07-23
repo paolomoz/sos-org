@@ -1,0 +1,14 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"opening\"]"
+ ],
+ "cards": [
+  "[data-section=\"program-directory\"] .card-grid"
+ ],
+ "band": [
+  "[data-section=\"in-person-programs\"]"
+ ]
+}

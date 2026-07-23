@@ -1,0 +1,19 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"opening\"]",
+  "[data-section=\"what-to-expect\"] .prose",
+  "[data-section=\"about-us\"] .prose",
+  "[data-section=\"sant-rajinder-singh\"] .duo",
+  "[data-section=\"contact\"]"
+ ],
+ "tiles": [
+  "[data-section=\"webinars-offered\"]"
+ ],
+ "cards": [
+  "[data-section=\"other-webinars\"] .card-grid",
+  "[data-section=\"testimonials\"] .testimonial-grid"
+ ]
+}

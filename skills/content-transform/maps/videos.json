@@ -1,0 +1,8 @@
+{
+ "page-head": [
+  "[data-section=\"page-head\"]"
+ ],
+ "cards": [
+  "[data-section=\"videos-listing\"] .tile-grid"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "text": [
+  "[data-section=\"opening\"]",
+  "[data-section=\"what-is\"]",
+  "[data-section=\"reasons-benefits\"]",
+  "[data-section=\"common-mistakes\"]",
+  "[data-section=\"conclusion\"]"
+ ],
+ "steps": [
+  "[data-section=\"routine\"]"
+ ],
+ "cards": [
+  "[data-section=\"workshops\"] .workshop-grid"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "page-head": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"hero\"] .prose",
+  "[data-section=\"find-a-program\"] .prose",
+  "[data-section=\"pull-quote\"] .prose",
+  "[data-section=\"finding-your-true-purpose\"] .prose",
+  "[data-section=\"unraveling-lifes-great-mysteries\"] .prose",
+  "[data-section=\"we-are-embodied-souls\"] .prose",
+  "[data-section=\"meditation-is-a-way\"] .prose",
+  "[data-section=\"personal-transformation\"] .prose"
+ ],
+ "media": [
+  "[data-section=\"hero\"] figure:has(a)"
+ ]
+}

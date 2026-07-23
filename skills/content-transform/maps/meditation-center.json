@@ -1,0 +1,27 @@
+{
+ "page-hero": [
+  "[data-section=\"hero\"]"
+ ],
+ "cards": [
+  "[data-section=\"visit\"] .org-grid",
+  "[data-section=\"workshops\"] .card-grid",
+  "[data-section=\"community-initiatives\"] .card-grid"
+ ],
+ "text": [
+  "[data-section=\"blessing\"] .blessing-grid",
+  "[data-section=\"haven\"] .init-row",
+  "[data-section=\"haven\"] .init-row",
+  "[data-section=\"haven\"] .init-row",
+  "[data-section=\"haven\"] .init-row",
+  "[data-section=\"haven\"] .init-row",
+  "[data-section=\"haven\"] .init-row"
+ ],
+ "media": [
+  "[data-section=\"virtual-tour\"] figure:has(a)"
+ ],
+ "band": [
+  "[data-section=\"programs-events\"]",
+  "[data-section=\"spiritual-talks\"]",
+  "[data-section=\"community-initiatives\"] .wrap > h2"
+ ]
+}

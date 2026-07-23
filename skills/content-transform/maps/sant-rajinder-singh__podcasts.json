@@ -1,0 +1,28 @@
+{
+ "page-hero": [
+  "[data-section=\"article-head\"]"
+ ],
+ "text": [
+  "[data-section=\"intro\"] .prose",
+  "[data-section=\"s02e12\"] .prose",
+  "[data-section=\"s02e12\"] .prose",
+  "[data-section=\"s02e11\"] .prose",
+  "[data-section=\"s02e11\"] .prose",
+  "[data-section=\"s02e10\"] .prose",
+  "[data-section=\"s02e10\"] .prose",
+  "[data-section=\"s02e09\"] .prose",
+  "[data-section=\"s02e09\"] .prose",
+  "[data-section=\"s02e08\"] .prose",
+  "[data-section=\"s02e08\"] .prose",
+  "[data-section=\"s02e07\"] .prose",
+  "[data-section=\"s02e07\"] .prose",
+  "[data-section=\"s02e06\"] .prose",
+  "[data-section=\"s02e06\"] .prose",
+  "[data-section=\"s02e05\"] .prose",
+  "[data-section=\"s02e05\"] .prose",
+  "[data-section=\"s02e04\"] .prose",
+  "[data-section=\"s02e04\"] .prose",
+  "[data-section=\"s02e03\"] .prose",
+  "[data-section=\"s02e03\"] .prose"
+ ]
+}
