@@ -1,0 +1,65 @@
+/*
+ * events-list — dynamic events region (events template).
+ * The grid ships EMPTY (data-dynamic="events-list") for the feed integration;
+ * the designed empty state + actions render beneath it. Card styling is kept
+ * so server-populated .event-card items land styled (prototype event-card
+ * shape, minus the placeholder signature).
+ */
+
+.events-list .events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.events-list .events-grid:not(:empty) { margin-bottom: var(--spacing-2xl); }
+
+.events-list .event-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-sm);
+}
+
+.events-list .event-card .title {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+.events-list .event-card .byline { color: var(--color-sandal); }
+
+.events-list .event-link-hint,
+.events-list .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.events-list .event-link-hint { margin-top: auto; }
+
+.events-list .events-empty {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.events-list .events-empty-line {
+  margin-bottom: var(--spacing-xl);
+}
+
+.events-list .events-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}

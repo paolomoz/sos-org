@@ -1,0 +1,83 @@
+/*
+ * steps — the SOS technique as numbered discs over a semantic <ol>.
+ * Lifted verbatim from the program prototype `.technique` / `.steps` section.
+ * White band, centered head, left-aligned step cards.
+ */
+
+main .section:has(.steps) {
+  background: var(--color-surface);
+}
+
+.steps { text-align: center; }
+
+.steps .section-head { margin-bottom: var(--spacing-xl); }
+
+.steps .section-head h2 {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.steps .lede {
+  max-width: 68ch;
+  margin: 0 auto var(--spacing-xl);
+  text-align: center;
+}
+
+.steps .steps-list {
+  list-style: none;
+  counter-reset: step;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 760px;
+  display: grid;
+  gap: var(--spacing-lg);
+  text-align: left;
+}
+
+.steps .steps-list li {
+  counter-increment: step;
+  background: var(--color-bg);
+  border-radius: var(--radius-surface);
+  padding: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.steps .steps-list li::before {
+  content: counter(step);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps .steps-list h3 {
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+.steps .steps-list p { margin: 0; }
+
+@media (width <= 900px) {
+  .steps .steps-list li {
+    grid-template-columns: 40px 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .steps .steps-list li::before {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}

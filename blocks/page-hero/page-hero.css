@@ -1,0 +1,267 @@
+/*
+ * page-hero — variants banner | photo [plate] | panel
+ * CSS lifted verbatim from the approved prototypes (article / program /
+ * institutional / bio hero sections), scoped `.page-hero …` (blockWrapperClass=none).
+ * The hero owns its section: no vertical padding, no silken thread above it
+ * (the foundation thread only starts after the first non-empty section).
+ */
+
+main .section:has(.page-hero) {
+  padding-block: 0;
+}
+
+/* ===== banner (article): full-bleed banner image + centered rule + h1 ===== */
+.page-hero .banner-media img {
+  width: 100%;
+  height: clamp(200px, 31vw, 460px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.page-hero .head-plate {
+  text-align: center;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--spacing-xl);
+}
+
+.page-hero .head-plate .rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--color-gold);
+  margin: 0 auto var(--spacing-lg);
+  border-radius: 2px;
+}
+
+.page-hero .head-plate h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-accent);
+  font-size: clamp(2.5rem, 4.5vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+/* ===== photo (program): captured photo behind navy scrim ===== */
+.page-hero .hero-photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-accent);
+}
+
+.page-hero .hero-photo img.hero-bg,
+.page-hero .hero-photo picture.hero-bg,
+.page-hero .hero-photo picture.hero-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.page-hero .hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgb(4 58 91 / 88%) 0%, rgb(10 81 120 / 72%) 55%, rgb(4 58 91 / 60%) 100%);
+}
+
+.page-hero .hero-content {
+  position: relative;
+  padding-block: var(--spacing-2xl);
+  min-height: clamp(320px, 36vw, 480px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page-hero .hero-content h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-surface);
+  font-size: clamp(2.75rem, 5vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-md);
+}
+
+.page-hero .hero-lede {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  max-width: 34ch;
+}
+
+/* ===== photo plate (institutional): photo + bottom navy plate w/ kicker + h1 ===== */
+.page-hero .hero-photo.plate img.hero-bg,
+.page-hero .hero-photo.plate picture.hero-bg,
+.page-hero .hero-photo.plate picture.hero-bg img {
+  position: static;
+  width: 100%;
+  height: clamp(380px, 44vw, 620px);
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.page-hero .hero-photo.plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgb(4 58 91 / 45%) 0%, rgb(4 58 91 / 18%) 32%, rgb(4 58 91 / 4%) 62%, rgb(4 58 91 / 12%) 100%);
+}
+
+.page-hero .hero-plate {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--spacing-xl);
+  z-index: 1;
+}
+
+.page-hero .hero-plate h1 {
+  display: inline-block;
+  background: rgb(4 58 91 / 78%);
+  border-radius: var(--radius-surface);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin: 0;
+  color: #FFF;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.5vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.page-hero .hero-plate .hero-kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFF;
+  margin-bottom: var(--spacing-sm);
+}
+
+@media (width <= 640px) {
+  .page-hero .hero-photo.plate img.hero-bg,
+  .page-hero .hero-photo.plate picture.hero-bg img { height: clamp(320px, 80vw, 420px); }
+
+  .page-hero .hero-plate h1 { padding: var(--spacing-md) var(--spacing-lg); }
+}
+
+/* ===== panel (bio): navy split band — cropped portrait window | kicker + h1 + rule ===== */
+main .section:has(.page-hero.panel) { background: var(--color-accent); }
+
+.page-hero .hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: 480px;
+}
+
+.page-hero .hero-media {
+  position: relative;
+  overflow: hidden;
+}
+
+/*
+ * fixed-window crop (lifted verbatim): image scaled to the 480px band height
+ * (scale 480/299), right edge pinned at banner col 1170 — the baked script
+ * lettering (col >= 1185) can never enter the window at any viewport width.
+ */
+.page-hero .hero-media img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 480px;
+  width: auto;
+  max-width: none;
+  left: calc(100% - 1878px);
+}
+
+.page-hero .hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(4 58 91 / 0%) 55%, rgb(4 58 91 / 55%) 84%, #043A5B 100%);
+}
+
+.page-hero .hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-2xl) var(--spacing-xl);
+}
+
+.page-hero .hero-panel h1 { color: var(--color-surface); }
+
+.page-hero .hero-panel .h1-kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+
+.page-hero .hero-panel .h1-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 4.2vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-surface);
+  max-width: 15ch;
+}
+
+.page-hero .hero-panel .hero-rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--color-gold);
+  margin-top: var(--spacing-lg);
+  border-radius: 2px;
+}
+
+@media (width <= 900px) {
+  .page-hero .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  /*
+   * stacked hero: fixed crop window (orig px 700-1170 of the 2560w banner) —
+   * keeps the portrait, excludes the baked lettering at every stacked width.
+   */
+  .page-hero .hero-media {
+    height: auto;
+    aspect-ratio: 470 / 299;
+  }
+
+  .page-hero .hero-media img {
+    width: 544.68%;
+    max-width: none;
+    height: auto;
+    inset: auto;
+    left: -148.94%;
+    top: 50%;
+    transform: translateY(-50%);
+    object-fit: fill;
+    object-position: initial;
+  }
+
+  .page-hero .hero-media::after {
+    background: linear-gradient(to bottom, rgb(4 58 91 / 0%) 55%, rgb(4 58 91 / 55%) 86%, #043A5B 100%);
+  }
+
+  .page-hero .hero-panel { padding: var(--spacing-xl) var(--spacing-lg); }
+}

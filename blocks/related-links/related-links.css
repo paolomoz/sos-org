@@ -1,0 +1,171 @@
+/*
+ * related-links — pre-footer link columns (default cards | ledger).
+ * Lifted verbatim from the article `.related-links` and bio `.related` sections.
+ */
+
+.related-links .section-head { margin-bottom: var(--spacing-xl); }
+
+.related-links .section-head .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.related-links .title {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+/* ===== default: white cards + hairline-separated text links (article) ===== */
+.related-links .related-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.related-links .card {
+  background: var(--color-surface);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.related-links .card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.related-links .card-body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.related-links .related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-links .related-list li {
+  border-bottom: 1px solid rgb(109 95 43 / 25%);
+}
+
+.related-links .related-list li:last-child { border-bottom: none; }
+
+.related-links .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-accent);
+}
+
+@media (width <= 700px) {
+  .related-links .related-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== ledger: open columns, gold-topped link ledger (bio) ===== */
+.related-links .cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+}
+
+.related-links .cols .title { margin-bottom: var(--spacing-md); }
+
+.related-links .link-ledger {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 3px solid var(--color-gold);
+}
+
+.related-links .link-ledger li {
+  border-bottom: 1px solid rgb(109 95 43 / 25%);
+}
+
+.related-links .link-ledger a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  width: 100%;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.related-links .link-ledger a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (width <= 640px) {
+  .related-links .cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* ===== circles: gold-ringed circular photo tiles + link columns (learn-more) ===== */
+main .section:has(.related-links.circles) { background: var(--color-surface); }
+
+.related-links.circles .section-head { text-align: center; }
+
+.related-links .lm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+  text-align: center;
+}
+
+.related-links .lm-tile {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-md);
+  object-fit: cover;
+  border: 3px solid var(--color-gold);
+}
+
+.related-links .lm-col .title {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.related-links .lm-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-links .lm-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.related-links .lm-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (width <= 900px) {
+  .related-links .lm-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (width <= 640px) {
+  .related-links .lm-grid { grid-template-columns: 1fr; }
+}

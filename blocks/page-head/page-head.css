@@ -1,0 +1,68 @@
+/*
+ * page-head — listing/events page title + filter chips.
+ * Lifted from the news listing `.page-head` / events `.page-title` prototype CSS.
+ */
+
+main .section:has(.page-head) {
+  padding-bottom: var(--spacing-lg);
+}
+
+main .section:has(.page-head.plain) {
+  padding-bottom: var(--spacing-md);
+}
+
+.page-head {
+  text-align: center;
+}
+
+.page-head .rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--color-gold);
+  margin: 0 auto var(--spacing-lg);
+  border-radius: 2px;
+}
+
+.page-head h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-accent);
+  font-size: clamp(2.5rem, 4.5vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--spacing-lg);
+}
+
+.page-head.plain h1 {
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+.page-head .filters ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.page-head .filters a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 12px;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-head .filters a:hover { border-bottom-color: var(--color-gold); }
+
+.page-head .filters a[aria-current='true'] { border-bottom-color: var(--color-gold); }

@@ -1,0 +1,193 @@
+/*
+ * band — full-width prose bands (about | community | centers | callout | connect).
+ * CSS lifted verbatim from the owning prototype sections; scoped `.band …`.
+ * The navy variants paint their whole SECTION via :has() (blocks own their
+ * section's ground; no section-metadata style classes).
+ */
+
+main .section:has(.band.about),
+main .section:has(.band.community),
+main .section:has(.band.centers),
+main .section:has(.band.connect) {
+  background: var(--color-accent);
+  color: #F9F4ED;
+}
+
+.band .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-surface);
+}
+
+.band .rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 2px;
+}
+
+.band a:not(.btn) { color: var(--color-surface); }
+
+.band .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-surface);
+}
+
+/* ===== about (index navy two-column value proposition) ===== */
+.band.about .headline { margin-bottom: var(--spacing-xl); }
+
+.band.about .rule { margin-bottom: var(--spacing-lg); }
+
+.band.about .about-cols {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--spacing-2xl);
+}
+
+.band.about p { max-width: 70ch; }
+
+.band.about ul {
+  margin: 0 0 var(--spacing-md);
+  padding-left: 1.2em;
+}
+
+.band.about li { margin-bottom: var(--spacing-xs); }
+
+@media (width <= 1024px) {
+  .band.about .about-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* ===== community (program navy centered ask) ===== */
+.band.community { text-align: center; }
+
+.band.community .rule { margin: 0 auto var(--spacing-lg); }
+
+.band.community .headline { margin-bottom: var(--spacing-lg); }
+
+.band.community p {
+  color: var(--color-bg);
+  max-width: 62ch;
+  margin-inline: auto;
+}
+
+.band.community .community-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xl);
+}
+
+/* ===== centers (institutional navy band head; sibling gallery carries the grid) ===== */
+.band.centers .rule { margin: 0 0 var(--spacing-lg); }
+
+.band.centers .headline { margin-bottom: var(--spacing-lg); }
+
+.band.centers .centers-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.band.centers .centers-cols p { max-width: 60ch; }
+
+@media (width <= 1024px) {
+  .band.centers .centers-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* ===== callout (light gold-bordered statement box) ===== */
+.band.callout .callout-box {
+  background: var(--color-surface);
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-surface);
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.band.callout .callout-box h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--heading-md);
+  line-height: 1.4;
+  color: var(--color-accent);
+  max-width: 46ch;
+  margin: 0 auto;
+}
+
+/* ===== connect (bio navy channel grid + social follow) ===== */
+.band.connect .headline {
+  text-align: center;
+  display: block;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.band.connect .connect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl) var(--spacing-2xl);
+  max-width: 1000px;
+  margin: 0 auto var(--spacing-2xl);
+}
+
+.band.connect .connect-grid h3 { margin-bottom: var(--spacing-sm); }
+
+.band.connect .connect-grid h3 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-surface);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  text-decoration: none;
+  border-bottom: 3px solid var(--color-gold);
+}
+
+.band.connect .connect-grid h3 a:hover { color: var(--color-gold); }
+
+.band.connect .connect-grid p { margin-bottom: 0; }
+
+.band.connect .connect-social {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid rgb(225 185 59 / 35%);
+  padding-top: var(--spacing-xl);
+}
+
+.band.connect .connect-social h3 {
+  color: var(--color-surface);
+  font-size: var(--heading-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.band.connect .connect-social .fb-line {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.band.connect .connect-social .follow {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+@media (width <= 1024px) {
+  .band.connect .connect-grid { grid-template-columns: 1fr; }
+}
