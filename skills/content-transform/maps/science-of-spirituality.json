@@ -4,10 +4,10 @@
  ],
  "text": [
   "[data-section=\"article-intro\"] .narrow",
-  "[data-section=\"science-curiosity\"]",
-  "[data-section=\"spirituality-science\"]",
+  "[data-section=\"science-curiosity\"] .narrow",
+  "[data-section=\"spirituality-science\"] .narrow",
   "[data-section=\"scientific-method\"] .narrow",
-  "[data-section=\"meditation\"]"
+  "[data-section=\"meditation\"] .narrow"
  ],
  "cards": [
   "[data-section=\"related-articles\"] .card-grid"

@@ -15,7 +15,7 @@
   "[data-section=\"find-a-teacher\"]"
  ],
  "band": [
-  "[data-section=\"classes-webinars\"]"
+  "[data-section=\"classes-webinars\"] .wrap > h2"
  ],
  "cards": [
   "[data-section=\"classes-webinars\"] .card-grid"

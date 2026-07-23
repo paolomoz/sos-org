@@ -3,7 +3,9 @@
   "[data-section=\"article-head\"]"
  ],
  "text": [
-  "[data-section=\"go-back\"] .prose",
+  "[data-section=\"go-back\"] .prose"
+ ],
+ "form": [
   "[data-section=\"form\"] .prose"
  ]
 }

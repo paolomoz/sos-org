@@ -53,7 +53,11 @@ export default async function decorate(block) {
   holder.dataset.dynamic = 'contact-form';
   const grid = document.createElement('div');
   grid.className = 'form-grid';
-  let consent = null;
+  // wave-final gate-driven fixes (logged): checkbox rows collect (connect-form
+  // has 5 topic checkboxes — a single `consent` slot dropped 4), and a `note`
+  // row type renders non-field prose (the consent paragraph with its links).
+  const consents = [];
+  const notes = [];
   let submitLabel = 'Submit';
 
   fields.forEach(({ labelCell, type }, i) => {
@@ -63,8 +67,16 @@ export default async function decorate(block) {
     const slug = labelText.replace(/^\*\s*/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const id = `cf-${slug || i}`;
 
+    if (type === 'note') {
+      const p = document.createElement('p');
+      p.className = 'form-consent';
+      [...labelCell.childNodes].forEach((nd) => p.append(nd.cloneNode(true)));
+      notes.push(p);
+      return;
+    }
+
     if (type === 'checkbox') {
-      consent = document.createElement('div');
+      const consent = document.createElement('div');
       consent.className = 'consent';
       const input = document.createElement('input');
       input.id = id;
@@ -75,6 +87,7 @@ export default async function decorate(block) {
       label.setAttribute('for', id);
       [...labelCell.childNodes].forEach((nd) => label.append(nd.cloneNode(true)));
       consent.append(input, label);
+      consents.push(consent);
       return;
     }
 
@@ -105,7 +118,8 @@ export default async function decorate(block) {
   });
 
   holder.append(grid);
-  if (consent) holder.append(consent);
+  consents.forEach((c) => holder.append(c));
+  notes.forEach((n) => holder.append(n));
   const btn = document.createElement('button');
   btn.className = 'btn btn-primary';
   btn.type = 'button'; // non-submitting by design (CSP rule)

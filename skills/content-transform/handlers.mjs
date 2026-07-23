@@ -19,6 +19,12 @@ function cleanHTML(node, page) {
 function cellOf(nodes, page) {
   const parts = [];
   for (const n of nodes) {
+    if (n.nodeType === 1 && ['ADDRESS', 'FIGURE', 'FIGCAPTION'].includes(n.tagName)) {
+      // container tags cleanNode unwraps in-place — serialize their children here
+      const inner = cellOf([...n.children], page);
+      if (inner) parts.push(inner);
+      continue;
+    }
     if (n.nodeType === 1 && n.tagName === 'BLOCKQUOTE') fixBlockquote(n);
     const html = cleanHTML(n, page);
     if (html && html.trim()) parts.push(html.trim());
@@ -29,20 +35,23 @@ function cellOf(nodes, page) {
 /** section-head → default-content unit (label span → <p>, heading, lede) */
 function headUnit(headEl, page) {
   const doc = headEl.ownerDocument;
+  const labels = [];
   const parts = [];
   for (const n of [...headEl.children]) {
     if (n.matches('span.label, .label')) {
+      // labels lead the head (the archetype kicker shape — a folded text block
+      // then classifies the first short pre-heading node as the kicker)
       const p = doc.createElement('p');
       p.textContent = n.textContent.trim();
-      parts.push(p.outerHTML);
+      labels.push(p.outerHTML);
     } else {
       const k = n.matches('h1,h2,h3,h4') ? extractKicker(n, doc) : null;
-      if (k) parts.push(k.outerHTML);
+      if (k) labels.push(k.outerHTML);
       const html = cleanHTML(n, page);
       if (html.trim()) parts.push(html.trim());
     }
   }
-  return { type: 'default', html: parts.join('\n') };
+  return { type: 'default', html: [...labels, ...parts].join('\n') };
 }
 
 // ---- media (video facades) -------------------------------------------------
@@ -191,6 +200,17 @@ function textUnit(nodes, page, variant) {
       continue;
     }
     flushAnchors();
+    if (n.tagName === 'FIGURE') {
+      // editorial figure in flow: img + caption p, never the raw <figure>
+      const img = n.querySelector('img');
+      if (img) {
+        const html = cleanHTML(img, page);
+        if (html) parts.push(html);
+      }
+      const cap = n.querySelector('figcaption');
+      if (cap && cap.textContent.trim()) parts.push(`<p>${escText(cap.textContent.trim())}</p>`);
+      continue;
+    }
     if (n.matches('h1,h2,h3,h4')) {
       const k = extractKicker(n, doc);
       if (k) parts.push(k.outerHTML);
@@ -206,7 +226,9 @@ function textUnit(nodes, page, variant) {
 
 // split section → text split / text split right (media-right when img follows prose)
 function splitUnit(sectionEl, page) {
-  const prose = q(sectionEl, '.prose');
+  // the prose side: .prose, or (init-row/speaker shapes) the img-less inner div
+  const prose = q(sectionEl, '.prose')
+    || qa(sectionEl, 'div').find((d) => !q(d, 'img, figure') && d.textContent.trim().length > 40);
   const fig = q(sectionEl, 'figure') || q(sectionEl, ':scope img')?.closest('figure');
   const img = fig ? q(fig, 'img') : qa(sectionEl, 'img').find((i) => !i.closest('.prose'));
   let right = false;
@@ -216,7 +238,7 @@ function splitUnit(sectionEl, page) {
   const cellParts = [];
   const doc = sectionEl.ownerDocument;
   // a wrap-level heading above the split grid belongs at the head of the cell
-  const wrapHeading = qa(sectionEl, 'h2, h3').find((h) => !h.closest('.prose') && !h.closest('figure'));
+  const wrapHeading = qa(sectionEl, 'h2, h3').find((h) => !(prose && prose.contains(h)) && !h.closest('figure'));
   if (wrapHeading) {
     const k = extractKicker(wrapHeading, doc);
     if (k) cellParts.push(k.outerHTML);
@@ -250,6 +272,11 @@ function bandUnit(sectionEl, page, variant) {
   const doc = sectionEl.ownerDocument;
   const wrap = q(sectionEl, '.wrap') || sectionEl;
   const heading = q(wrap, 'h2, h1');
+  // detect BEFORE cellOf mutates the DOM (cleanNode strips classes in place):
+  // a trailing .label line in community prose → sublabel-last CSS variant
+  const srcLabels = qa(wrap, 'p.label');
+  const hasTrailingLabel = variant === 'community' && srcLabels.length > 0
+    && !srcLabels[srcLabels.length - 1].closest('.community-actions');
   const rows = [];
   if (heading) {
     const k = extractKicker(heading, doc);
@@ -278,7 +305,8 @@ function bandUnit(sectionEl, page, variant) {
     });
     rows.push([`<p>${links.join(' ')}</p>`]);
   }
-  return { type: 'block', name: `band ${variant}`, rows };
+  const name = hasTrailingLabel ? `band ${variant} sublabel-last` : `band ${variant}`;
+  return { type: 'block', name, rows };
 }
 
 // ---- quote ------------------------------------------------------------------
@@ -360,6 +388,14 @@ function formUnit(formEl, page) {
       rows.push([`${star}${escText(label)}`, type === 'email' ? 'email' : type]);
     }
   });
+  // non-field prose in the form (consent paragraph, with links) → `note` rows
+  qa(formEl, ':scope > p').forEach((p) => {
+    const doc = p.ownerDocument;
+    const holder = doc.createElement('p');
+    while (p.firstChild) holder.append(p.firstChild);
+    const html = cellOf([holder], page).replace(/^<p>|<\/p>$/g, '').replace(/\s+/g, ' ').trim();
+    if (html) rows.push([html, 'note']);
+  });
   const submit = q(formEl, 'button, input[type="submit"]');
   if (submit) rows.push([escText((submit.textContent || submit.getAttribute('value') || 'Submit').trim()), 'submit']);
   return { type: 'block', name: 'form', rows };
@@ -427,10 +463,14 @@ export function walkSection(sectionEl, page, opts = {}) {
     }
     const u = textUnit(flow, page, textVariant);
     if (u) {
-      // in a multi-unit section, scope flow text to its bare wrap children so
-      // the proto pairing excludes the sibling blocks' content
+      // scope flow text to its own container (.narrow etc.) whenever it has
+      // one — a bare secSel overlaps sibling units when the section later
+      // grows more blocks (repeated .narrow heads pair by document order)
       const hasBlock = units.some((x) => x.type === 'block');
-      u.sel = hasBlock ? sub('.wrap > p') : secSel;
+      const parent = flow[0]?.parentElement;
+      const cls = parent && parent !== wrap ? (parent.getAttribute('class') || '').split(/\s+/)[0] : '';
+      if (cls) u.sel = sub(`.${cls}`);
+      else u.sel = hasBlock ? sub('.wrap > p') : secSel;
       units.push(u);
     }
     flow = [];
@@ -445,15 +485,19 @@ export function walkSection(sectionEl, page, opts = {}) {
       const f = figureRun[0];
       const img = q(f, 'img');
       const cap = q(f, 'figcaption');
-      const last = units[units.length - 1];
-      if (last && last.type === 'block' && last.name.startsWith('text') && !flow.length) {
+      const last = [...units].reverse().find((u) => u.type === 'block' && u.name.startsWith('text'));
+      if (last && !flow.length) {
         const parts = [];
         if (img) { const h = cleanHTML(img, page); if (h) parts.push(h); }
         if (cap && cap.textContent.trim()) parts.push(`<p>${escText(cap.textContent.trim())}</p>`);
         if (parts.length) last.rows[0][0] += `\n${parts.join('\n')}`;
-      } else {
+      } else if (flow.length) {
         if (img) flow.push(img);
         if (cap && cap.textContent.trim()) flow.push(pOf(cap));
+      } else if (img) {
+        // no text to ride: a standalone editorial image → gallery single
+        const g = galleryUnit([f], page, 'single');
+        if (g) { g.sel = sub('figure:not(:has(a))'); units.push(g); }
       }
       figureRun = [];
       return;
@@ -474,13 +518,28 @@ export function walkSection(sectionEl, page, opts = {}) {
       units.push(headUnit(child, page));
     } else if (child.matches('.prose')) {
       flushFlow();
-      const u = textUnit([...child.children], page, opts.proseVariant || textVariant);
-      if (u) { u.sel = sub('.prose'); units.push(u); }
+      const innerForm = q(child, 'form');
+      if (innerForm) {
+        const nonForm = [...child.children].filter((n) => n !== innerForm);
+        if (nonForm.length) {
+          const u0 = textUnit(nonForm, page, opts.proseVariant || textVariant);
+          if (u0) { u0.sel = sub('.prose'); units.push(u0); }
+        }
+        const fu = formUnit(innerForm, page);
+        fu.sel = nonForm.length ? sub('form') : sub('.prose');
+        units.push(fu);
+      } else {
+        const u = textUnit([...child.children], page, opts.proseVariant || textVariant);
+        if (u) { u.sel = sub('.prose'); units.push(u); }
+      }
     } else if (child.matches('figure') && q(child, 'a.facade')) {
       flushFlow();
       const u = mediaSingleUnit(child, page);
       if (u) { u.sel = sub('figure:has(a)'); units.push(u); }
-    } else if (child.matches('.figure-grid') || (child.matches('div') && qa(child, ':scope > figure').length >= 2 && !q(child, '.prose'))) {
+    } else if (child.matches('.figure-grid') || (child.matches('div') && qa(child, ':scope > figure').length >= 2 && !q(child, '.prose')
+        && !qa(child, ':scope > h1, :scope > h2, :scope > h3, :scope > p, :scope > span').length)) {
+      // figure-ONLY container → gallery; a mixed .narrow (heading + prose +
+      // report figures) walks generically so its text survives
       flushFlow();
       const figs = qa(child, ':scope > figure');
       const u = galleryUnit(figs, page, opts.galleryVariant || inferGalleryVariant(figs));
@@ -545,8 +604,12 @@ export function walkSection(sectionEl, page, opts = {}) {
       flushFlow();
       const u = quoteUnit(child.parentElement === wrap ? wrapBQ(child, doc) : child, page);
       if (u) { u.sel = sub('blockquote'); units.push(u); }
-    } else if (child.matches('div') && (q(child, ':scope > .prose') || q(child, ':scope > figure'))) {
-      // split-grid container (why-grid, split-grid…): prose + figure
+    } else if (child.matches('div') && qa(child, ':scope > figure, :scope > img').length <= 1
+        && (q(child, ':scope > .prose')
+          || (q(child, ':scope > figure') && qa(child, ':scope > div').some((d) => !q(d, 'img, figure') && d.textContent.trim()))
+          || (q(child, ':scope > img') && q(child, ':scope > div')))) {
+      // split-grid container (why-grid, init-row, speaker…): ONE media + a prose side.
+      // Mixed flow containers (.narrow with several report figures) walk generically.
       flushFlow();
       const u = splitUnit(child, page);
       if (u) { u.sel = sub(`.${(child.getAttribute('class') || '').split(/\s+/)[0] || 'split'}`); units.push(u); }
@@ -616,6 +679,7 @@ function isLinkRunDiv(el) {
   const links = qa(el, 'a');
   if (!links.length) return false;
   const linkText = links.map((a) => a.textContent).join('').replace(/\s/g, '');
+  if (!linkText) return false; // image-only anchors (sponsor logo walls) are not a link run
   return el.textContent.replace(/\s/g, '') === linkText;
 }
 

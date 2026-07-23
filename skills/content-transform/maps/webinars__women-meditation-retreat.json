@@ -8,10 +8,8 @@
   "[data-section=\"sant-rajinder-singh\"] .duo",
   "[data-section=\"about-us\"] .prose"
  ],
- "tiles": [
-  "[data-section=\"webinars\"]"
- ],
  "cards": [
+  "[data-section=\"webinars\"] .card-grid",
   "[data-section=\"testimonials\"] .testimonial-grid",
   "[data-section=\"other-webinars\"] .card-grid"
  ],

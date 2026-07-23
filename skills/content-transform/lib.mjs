@@ -88,9 +88,9 @@ export function cleanNode(node, page) {
     node.remove();
     return null;
   }
-  if (tag === 'FIGURE' || tag === 'FIGCAPTION') {
-    // unwrap figure/figcaption into parent flow (callers usually handle figures
-    // before cleaning; this is the fallback)
+  if (tag === 'FIGURE' || tag === 'FIGCAPTION' || tag === 'ADDRESS') {
+    // unwrap figure/figcaption/address into parent flow (callers usually handle
+    // figures before cleaning; <address> does not survive DA reliably)
     while (node.firstChild) node.parentNode.insertBefore(node.firstChild, node);
     node.remove();
     return null;

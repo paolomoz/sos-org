@@ -5,7 +5,6 @@
  "text": [
   "[data-section=\"what-is\"] .prose",
   "[data-section=\"become-aware\"] .prose",
-  "[data-section=\"become-aware\"] .wrap > p",
   "[data-section=\"what-happens\"] .prose",
   "[data-section=\"new-dawn\"] .prose"
  ],

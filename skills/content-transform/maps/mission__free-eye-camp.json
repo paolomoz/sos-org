@@ -1,16 +1,21 @@
 {
  "page-hero": [
-  "[data-section=\"hero\"]"
+  "[data-section=\"hero\"] h1"
  ],
  "text": [
-  "[data-section=\"mission-meets-challenge\"]",
+  "[data-section=\"hero\"] .hero-lede",
+  "[data-section=\"hero\"] .hero-actions",
+  "[data-section=\"mission-meets-challenge\"] .narrow",
   "[data-section=\"cataracts-challenge\"] .init-row",
-  "[data-section=\"42nd-camp\"]",
+  "[data-section=\"42nd-camp\"] .narrow",
   "[data-section=\"gift-of-vision\"] .narrow",
-  "[data-section=\"patients-experiences\"]",
   "[data-section=\"patients-experiences\"] .narrow",
-  "[data-section=\"doctors-thoughts\"]",
+  "[data-section=\"patients-experiences\"] .narrow",
   "[data-section=\"doctors-thoughts\"] .narrow",
+  "[data-section=\"doctors-thoughts\"] .narrow",
+  "[data-section=\"guiding-force\"] .narrow",
+  "[data-section=\"press-release\"]",
+  "[data-section=\"social-media-postings\"] .narrow",
   "[data-section=\"billboards-banners\"] .narrow",
   "[data-section=\"about-us\"] .init-row",
   "[data-section=\"contact\"]"
@@ -23,11 +28,6 @@
   "[data-section=\"doctors-thoughts\"] blockquote",
   "[data-section=\"doctors-thoughts\"] blockquote",
   "[data-section=\"closing-quote\"] blockquote"
- ],
- "gallery": [
-  "[data-section=\"guiding-force\"] .narrow",
-  "[data-section=\"press-release\"] .narrow",
-  "[data-section=\"social-media-postings\"] .narrow"
  ],
  "media": [
   "[data-section=\"selfless-service-video\"]"

@@ -203,3 +203,13 @@ main .section:has(.band.connect) {
   text-transform: uppercase;
   color: var(--color-gold);
 }
+
+/* wave-final one-rule fix (logged): a trailing .label line in a community band
+   (event-venue "No Smoking Facility") — opt-in variant, gold label voice */
+.band.community.sublabel-last .wrap > p:last-of-type {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}

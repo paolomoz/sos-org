@@ -117,9 +117,21 @@ export default async function decorate(block) {
     scrim.setAttribute('aria-hidden', 'true');
     const content = document.createElement('div');
     content.className = 'wrap hero-content';
+    // wave-final one-rule fix (logged): photo heros may carry a kicker inside
+    // the h1 (women-retreat) — previously only panel/plate rendered it.
+    if (kicker) {
+      const k = document.createElement('span');
+      k.className = 'hero-kicker';
+      k.textContent = kicker;
+      h1.prepend(k);
+    }
     content.append(h1);
     if (lede) {
-      const l = document.createElement('h2');
+      // wave-final one-rule fix (logged): the lede keeps its authored rank — a
+      // heading lede stays h2 (learn-meditation archetype), a text lede is a p
+      // (women-retreat) so the role inventory round-trips.
+      const isHeadingLede = lede.tagName && /^H[1-6]$/.test(lede.tagName);
+      const l = document.createElement(isHeadingLede ? 'h2' : 'p');
       l.className = 'hero-lede';
       l.textContent = (lede.textContent || String(lede)).trim();
       content.append(l);

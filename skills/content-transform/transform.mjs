@@ -24,6 +24,8 @@ const OVERRIDES = {
   // one .narrow container — flatten to one text block (facade → plain link; the
   // media facade visual is waived on this page, logged in the conversion log)
   'benefits-of-a-spiritual-guide': { 'guide-intro': { flowAll: true } },
+  // sponsor logo walls: h3 group titles + image-only anchors → one text block
+  'programs/women-retreat-divine-beauty': { sponsors: { flowAll: true, textVariant: 'centered' } },
 };
 
 function listPages() {
@@ -63,7 +65,7 @@ function heroBanner(img, h1Text, page) {
   return { type: 'block', name: 'page-hero banner', rows };
 }
 
-function heroFrom(section, page, variant) {
+function heroFrom(section, page, variant, secSel) {
   // generic: img?, kicker (text before h1), h1, lede (text after h1)
   const rows = [];
   const img = q(section, 'img');
@@ -73,17 +75,48 @@ function heroFrom(section, page, variant) {
   }
   const h1 = q(section, 'h1, h2');
   const kicker = q(section, '.hero-kicker, .kicker');
-  let kickerText = kicker ? kicker.textContent.trim() : '';
+  const kickerText = kicker ? kicker.textContent.trim() : '';
   if (kicker && kicker.closest('h1, h2')) kicker.remove(); // kicker nested in the h1
+  // a date/sub-line span nested in the h1 (mission heros) → the lede slot
+  const h1Date = h1 ? q(h1, '.h1-date') : null;
+  const dateText = h1Date ? h1Date.textContent.trim() : '';
+  if (h1Date) h1Date.remove();
   if (kickerText) rows.push([`<p>${escText(kickerText)}</p>`]);
   if (h1) rows.push([`<h1>${escText(h1.textContent.replace(/\s+/g, ' ').trim())}</h1>`]);
   const lede = q(section, '.hero-lede, .lede') || qa(section, 'p').find((p) => !p.closest('figure')
-    && p.textContent.trim() && h1 && (h1.compareDocumentPosition(p) & 4));
-  if (lede && lede.textContent.trim()) {
-    const html = lede.textContent.trim();
-    rows.push([variant === 'photo' ? `<h2>${escText(html)}</h2>` : `<p>${escText(html)}</p>`]);
+    && !p.closest('.hero-meta, .hero-actions') && p.textContent.trim() && h1 && (h1.compareDocumentPosition(p) & 4));
+  const units = [];
+  if (dateText) {
+    rows.push([`<p>${escText(dateText)}</p>`]);
+    // the hero-lede then rides a follow-up text block (one lede slot in the hero)
+    if (lede && lede.textContent.trim()) {
+      units.push({ type: 'block', name: 'text centered', rows: [[`<p>${escText(lede.textContent.replace(/\s+/g, ' ').trim())}</p>`]], sel: secSel ? `${secSel} .hero-lede` : null });
+    }
+  } else if (lede && lede.textContent.trim()) {
+    const html = escText(lede.textContent.replace(/\s+/g, ' ').trim());
+    const isHeadingLede = /^H[1-6]$/.test(lede.tagName);
+    rows.push([variant === 'photo' && isHeadingLede ? `<h2>${html}</h2>` : `<p>${html}</p>`]);
   }
-  return { type: 'block', name: `page-hero ${variant}`, rows };
+  // hero-meta lines + hero-actions links → follow-up text blocks (no hero slots)
+  const meta = q(section, '.hero-meta');
+  if (meta) {
+    const ps = qa(meta, 'p').map((p) => `<p>${escText(p.textContent.replace(/\s+/g, ' ').trim())}</p>`);
+    if (ps.length) units.push({ type: 'block', name: 'text centered', rows: [[ps.join('\n')]], sel: secSel ? `${secSel} .hero-meta` : null });
+  }
+  const actions = q(section, '.hero-actions');
+  if (actions) {
+    const links = qa(actions, 'a').map((a) => {
+      const cls = a.getAttribute('class') || '';
+      const inner = `<a href="${mapHref(a.getAttribute('href'), page)}">${escText(a.textContent.trim())}</a>`;
+      if (/btn-primary/.test(cls)) return `<strong>${inner}</strong>`;
+      if (/btn-secondary/.test(cls)) return `<em>${inner}</em>`;
+      return inner;
+    });
+    if (links.length) units.push({ type: 'block', name: 'text centered', rows: [[`<p>${links.join(' ')}</p>`]], sel: secSel ? `${secSel} .hero-actions` : null });
+  }
+  const hero = { type: 'block', name: `page-hero ${variant}`, rows };
+  if (units.length && secSel) hero.sel = `${secSel} h1`; // extras pair with their own scopes
+  return units.length ? [hero, ...units] : hero;
 }
 
 function pageHeadUnit(section, page, plain) {
@@ -166,9 +199,9 @@ function dispatch(section, page, state, opts) {
   }
   if (has('page-head')) return [pageHeadUnit(section, page, false)];
   if (has('page-title')) return [pageHeadUnit(section, page, true)];
-  if (has('band-hero')) return [heroFrom(section, page, 'panel')];
-  if (has('page-hero')) return [heroFrom(section, page, q(section, '.hero-kicker') ? 'photo plate' : 'photo')];
-  if (has('hero')) return [heroFrom(section, page, onNavy ? 'panel' : 'photo')];
+  if (has('band-hero')) return [].concat(heroFrom(section, page, 'panel', opts.secSel));
+  if (has('page-hero')) return [].concat(heroFrom(section, page, q(section, '.hero-kicker') && q(section, '.page-hero-text') ? 'photo plate' : 'photo', opts.secSel));
+  if (has('hero')) return [].concat(heroFrom(section, page, onNavy ? 'panel' : 'photo', opts.secSel));
   if (has('hero-carousel')) { unmapped.push({ page, what: 'hero-carousel outside index' }); return null; }
 
   if (has('opening')) return walkSection(section, page, { textVariant: 'centered', ...opts });
@@ -210,7 +243,8 @@ function dispatch(section, page, state, opts) {
       const rows = [];
       if (h2) rows.push([`<h2>${escText(h2.textContent.trim())}</h2>`]);
       if (lede && !lede.closest('.card-grid, .news-grid')) rows.push([`<p>${escText(lede.textContent.trim())}</p>`]);
-      units.push({ type: 'block', name: 'band community', rows });
+      // sel scoped to the band's own head — the grid pairs with the cards block
+      units.push({ type: 'block', name: 'band community', rows, sel: opts.secSel ? `${opts.secSel} .wrap > h2` : null });
       const c = cardsUnit(grid, page, opts.cardsVariant);
       if (c) {
         const cls = (grid.getAttribute('class') || '').split(/\s+/)[0];
@@ -304,7 +338,7 @@ function dispatch(section, page, state, opts) {
     if (m) units.push(m);
     return units;
   }
-  if (has('webinars')) {
+  if (has('webinars') && qa(section, 'a.webinar-tile').length) {
     const units = [];
     const headEl = q(section, '.section-head');
     if (headEl) units.push(headUnit(headEl, page));
@@ -349,7 +383,8 @@ function dispatch(section, page, state, opts) {
     const h2 = headEl ? null : q(wrap, ':scope > h2') || q(wrap, 'h2');
     if (headEl) units.push(headUnit(headEl, page));
     else if (h2) units.push({ type: 'default', html: `<h2>${escText(h2.textContent.trim())}</h2>` });
-    const cols = qa(wrap, ':scope > div > div, :scope > .cols > div, :scope > div').filter((d) => q(d, 'ul') && q(d, 'h3, h2, h4'));
+    // leaf columns only: a div whose DIRECT children include the topic heading + list
+    const cols = qa(wrap, 'div').filter((d) => q(d, ':scope > h3, :scope > h2, :scope > h4') && q(d, ':scope > ul'));
     const variant = cols.some((c) => q(c, 'img')) ? 'circles' : (opts.relatedVariant || '');
     if (cols.length) units.push(relatedLinksUnit(cols, page, variant));
     return units;

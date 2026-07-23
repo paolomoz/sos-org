@@ -9,10 +9,8 @@
   "[data-section=\"sant-rajinder-singh\"] .duo",
   "[data-section=\"contact\"]"
  ],
- "tiles": [
-  "[data-section=\"webinars-offered\"]"
- ],
  "cards": [
+  "[data-section=\"webinars-offered\"] .card-grid",
   "[data-section=\"other-webinars\"] .card-grid",
   "[data-section=\"testimonials\"] .testimonial-grid"
  ]

@@ -1,22 +1,25 @@
 {
  "page-hero": [
-  "[data-section=\"hero\"]"
+  "[data-section=\"hero\"] h1"
  ],
  "text": [
+  "[data-section=\"hero\"] .hero-meta",
+  "[data-section=\"hero\"] .hero-actions",
   "[data-section=\"event-schedule\"]",
   "[data-section=\"about-the-event\"]",
-  "[data-section=\"keynote-speaker\"]",
-  "[data-section=\"sponsors\"]",
-  "[data-section=\"sponsors\"] .wrap > p",
-  "[data-section=\"sponsors\"] .wrap > p",
-  "[data-section=\"sponsors\"] .wrap > p",
-  "[data-section=\"gallery\"] .wrap > p"
+  "[data-section=\"keynote-speaker\"] .speaker",
+  "[data-section=\"keynote-speaker\"] .speaker",
+  "[data-section=\"keynote-speaker\"] .speaker",
+  "[data-section=\"sponsors\"]"
  ],
  "cards": [
   "[data-section=\"breakout-sessions\"] .card-grid"
  ],
  "media": [
   "[data-section=\"gallery\"] figure:has(a)"
+ ],
+ "gallery": [
+  "[data-section=\"gallery\"] figure:not(:has(a))"
  ],
  "band": [
   "[data-section=\"event-venue\"]"

@@ -284,3 +284,22 @@ main .section:has(.page-hero.panel) { background: var(--color-accent); }
   margin: var(--spacing-md) 0 0;
   max-width: 44ch;
 }
+
+/* wave-final one-rule fix (logged): photo-hero kicker + text-rank lede */
+.page-hero .hero-photo .hero-kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.page-hero .hero-photo p.hero-lede {
+  color: var(--color-bg);
+  font-weight: 500;
+  font-size: 20px;
+  margin: var(--spacing-md) 0 0;
+}

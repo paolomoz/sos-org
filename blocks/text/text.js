@@ -89,8 +89,11 @@ function decorateProse(block, nodes, centered) {
 
   const headingIdx = nodes.findIndex(isHeading);
   nodes.forEach((n, i) => {
-    if (headingIdx >= 0 && i < headingIdx && n.textContent.trim().length < 80 && !isLinkRun(n)) {
-      // short pre-heading text = kicker (#76 — buffer, don't drop)
+    if (i === 0 && headingIdx > 0 && n.textContent.trim().length < 80 && !isLinkRun(n)) {
+      // wave-final one-rule fix (logged): the kicker is only ever the CELL'S
+      // FIRST node (the archetype "Introduction:" shape) — a short body line
+      // that merely precedes a mid-prose <h3> is prose, not a kicker (it
+      // painted as an uppercase label on find-local-center).
       const kicker = document.createElement('span');
       kicker.className = 'kicker label';
       kicker.append(...n.childNodes);

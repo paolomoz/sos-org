@@ -1,14 +1,16 @@
 {
  "page-hero": [
-  "[data-section=\"hero\"]"
+  "[data-section=\"hero\"] h1"
  ],
  "text": [
+  "[data-section=\"hero\"] .hero-lede",
+  "[data-section=\"hero\"] .hero-actions",
   "[data-section=\"restores-vision\"] .init-row",
-  "[data-section=\"selfless-service-initiative\"]",
+  "[data-section=\"selfless-service-initiative\"] .narrow",
   "[data-section=\"groundwork\"] .init-row",
-  "[data-section=\"doctors-dictum\"]",
   "[data-section=\"doctors-dictum\"] .narrow",
-  "[data-section=\"patients-perspective\"]",
+  "[data-section=\"doctors-dictum\"] .narrow",
+  "[data-section=\"patients-perspective\"] .narrow",
   "[data-section=\"core-inspiration\"] .init-row",
   "[data-section=\"about-us\"] .init-row",
   "[data-section=\"contact\"]"

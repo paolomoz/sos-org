@@ -2,7 +2,7 @@
  "page-head": [
   "[data-section=\"article-head\"]"
  ],
- "text": [
+ "form": [
   "[data-section=\"form\"] .prose"
  ]
 }
