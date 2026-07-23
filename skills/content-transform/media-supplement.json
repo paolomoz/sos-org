@@ -165,6 +165,21 @@
    "source": "https://www.sos.org/assets/meditation-series/imgs/habits/MeditationPage_09.jpeg",
    "subpath": "uploads/meditation-series/imgs/habits/meditationpage_09.jpeg",
    "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/habits/meditationpage_09.jpeg"
+  },
+  {
+   "source": "(remap: webp key with spaces broke ingestion)",
+   "subpath": "uploads/meditation-series/imgs/skrm-about/centers/kirpal ashram delhi.webp",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/skrm-about/centers/kirpal-ashram-delhi.webp"
+  },
+  {
+   "source": "(remap: webp key with spaces broke ingestion)",
+   "subpath": "uploads/meditation-series/imgs/skrm-about/conferences/37th international human unity conference.webp",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/meditation-series/imgs/skrm-about/conferences/37th-international-human-unity-conference-2025.webp"
+  },
+  {
+   "source": "(remap: 525KB Illustrator svg 409s the content-bus \u2014 rasterized to png)",
+   "subpath": "uploads/2021/03/sa-quote-new-world-opens-up.svg",
+   "daUrl": "https://content.da.live/paolomoz/sos-org/media/uploads/2021/03/sa-quote-new-world-opens-up.png"
   }
  ]
 }

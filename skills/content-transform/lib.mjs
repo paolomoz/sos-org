@@ -21,15 +21,16 @@ export const imgFailures = [];
 /** image src → content.da.live URL via the manifest (lowercased subpath) or the supplement. */
 export function mapImgSrc(src, page) {
   if (!src) return null;
-  if (src.startsWith('https://content.da.live/')) return src;
-  if (bySource.has(src)) return bySource.get(src);
+  if (src.startsWith('https://content.da.live/')) return encodeURI(src);
+  if (bySource.has(src)) return encodeURI(bySource.get(src));
   // https://www.sos.org/assets/<rest> ≡ local /assets/uploads/<rest> (extract layout)
   const m = src.match(/^(?:https?:\/\/(?:www\.)?sos\.org)?\/?assets\/(?:uploads\/)?(.+)$/);
   if (!m) { imgFailures.push({ page, src, why: 'external, not in manifest/supplement' }); return null; }
   const sub = `uploads/${decodeURIComponent(m[1]).toLowerCase()}`;
   const hit = bySubpath.get(sub);
   if (!hit) { imgFailures.push({ page, src, why: 'subpath not in manifest' }); return null; }
-  return hit;
+  // percent-encode — raw spaces in the DA media key broke preview ingestion (#75 class)
+  return encodeURI(hit);
 }
 
 const YT = /(^|\.)((youtube(-nocookie)?\.com)|youtu\.be)$/;
