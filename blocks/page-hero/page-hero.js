@@ -64,14 +64,24 @@ export default async function decorate(block) {
       k.textContent = kicker;
       inner.append(k);
     }
-    const name = document.createElement('span');
-    name.className = 'h1-name';
-    [...h1.childNodes].forEach((n) => name.append(n));
-    inner.append(name);
+    // wave-final one-rule fix (logged in eds-conversion-log.md): the title is
+    // the h1's DIRECT content, not an .h1-name span — a span leaf classifies
+    // as body in the shared role inventory (ROLE SWAP on every band-hero
+    // page); the .h1-name CSS now also targets the bare .hero-panel h1.
+    [...h1.childNodes].forEach((n) => inner.append(n));
     const rule = document.createElement('span');
     rule.className = 'hero-rule';
     rule.setAttribute('aria-hidden', 'true');
     panel.append(inner, rule);
+    // wave-final one-rule fix (logged): band-hero pages carry a lede line
+    // ("By Sant Rajinder Singh Ji Maharaj") — text after the title renders as
+    // p.hero-lede (the photo variant already had its lede slot).
+    if (lede) {
+      const l = document.createElement('p');
+      l.className = 'hero-lede';
+      l.textContent = (lede.textContent || '').trim();
+      if (l.textContent) panel.insertBefore(l, rule);
+    }
     wrap.append(mediaBox, panel);
   } else if (isPhoto && isPlate) {
     // institutional photo + bottom navy plate

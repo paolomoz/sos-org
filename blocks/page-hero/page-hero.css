@@ -212,6 +212,7 @@ main .section:has(.page-hero.panel) { background: var(--color-accent); }
   margin-bottom: var(--spacing-md);
 }
 
+.page-hero .hero-panel h1,
 .page-hero .hero-panel .h1-name {
   display: block;
   font-family: var(--font-display);
@@ -264,4 +265,22 @@ main .section:has(.page-hero.panel) { background: var(--color-accent); }
   }
 
   .page-hero .hero-panel { padding: var(--spacing-xl) var(--spacing-lg); }
+}
+
+
+/* wave-final one-rule fixes (logged): kicker keeps its own metrics inside the
+   flattened h1; band-hero lede line below the title */
+.page-hero .hero-panel h1 .h1-kicker {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.page-hero .hero-panel .hero-lede {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--color-bg);
+  margin: var(--spacing-md) 0 0;
+  max-width: 44ch;
 }

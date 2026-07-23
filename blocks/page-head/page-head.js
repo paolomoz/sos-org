@@ -16,6 +16,13 @@
 export default async function decorate(block) {
   const titleEl = block.querySelector('h1, h2, h3');
   const links = [...block.querySelectorAll('a')];
+  // wave-final one-rule fix (logged in eds-conversion-log.md): a non-link text
+  // row after the title = the head's byline sub-label (e.g. privacy-policy
+  // "(Science of Spirituality Public Website)") — previously dropped by decode.
+  const bylineEl = [...block.querySelectorAll('p, div > div')].find((el) => el !== titleEl
+    && !el.querySelector('a, h1, h2, h3, p, div') && !el.closest('h1, h2, h3')
+    && el.textContent.trim()
+    && el.textContent.trim() !== (titleEl?.textContent || '').trim());
 
   const h1 = document.createElement('h1');
   if (titleEl) [...titleEl.childNodes].forEach((n) => h1.append(n.cloneNode(true)));
@@ -30,6 +37,12 @@ export default async function decorate(block) {
     wrap.append(rule);
   }
   wrap.append(h1);
+  if (bylineEl) {
+    const byline = document.createElement('p');
+    byline.className = 'label byline';
+    byline.textContent = bylineEl.textContent.trim();
+    wrap.append(byline);
+  }
 
   if (links.length) {
     const nav = document.createElement('nav');

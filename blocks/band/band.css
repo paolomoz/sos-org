@@ -191,3 +191,15 @@ main .section:has(.band.connect) {
 @media (width <= 1024px) {
   .band.connect .connect-grid { grid-template-columns: 1fr; }
 }
+
+/* wave-final one-rule fix (logged): meditation-center navy bands carry a gold
+   sub-label under the band heading — opt-in `sublabel` variant (index bands
+   unaffected). */
+.band.community.sublabel .wrap > p:first-of-type,
+.band.about.sublabel .about-cols > div:first-child > p:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}

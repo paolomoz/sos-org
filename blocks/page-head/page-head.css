@@ -66,3 +66,13 @@ main .section:has(.page-head.plain) {
 .page-head .filters a:hover { border-bottom-color: var(--color-gold); }
 
 .page-head .filters a[aria-current='true'] { border-bottom-color: var(--color-gold); }
+
+/* wave-final one-rule fix: byline sub-label under the title (privacy/terms heads) */
+.page-head .byline {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin: calc(-1 * var(--spacing-sm)) 0 var(--spacing-lg);
+}

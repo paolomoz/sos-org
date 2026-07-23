@@ -55,3 +55,14 @@
   text-underline-offset: 3px;
   color: var(--color-accent);
 }
+
+/* wave-final one-rule fix (logged): master-quote sections cite the Master in
+   plain prose voice, not the index quote-band's uppercase label — the
+   plain-cite variant restores the captured style so roles round-trip. */
+.quote.plain-cite blockquote cite {
+  font-weight: 400;
+  font-size: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+  color: inherit;
+}
