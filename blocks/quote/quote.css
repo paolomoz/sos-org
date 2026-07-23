@@ -1,0 +1,57 @@
+/* quote — quote-band (lifted from index-proposed.html § quote-band).
+   Scoped `.quote …` — blockWrapperClass=none. Section bg = page bg (First Light). */
+
+.quote { text-align: center; }
+
+.quote blockquote {
+  margin: 0 auto;
+  max-width: 760px;
+  padding-inline: var(--spacing-lg);
+}
+
+.quote .rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--color-gold);
+  margin: 0 auto var(--spacing-lg);
+  border-radius: 2px;
+}
+
+.quote blockquote p {
+  font-family: var(--heading-font-family);
+  font-style: italic;
+  font-size: var(--heading-md);
+  line-height: 1.4;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.quote blockquote cite { font-style: normal; }
+
+.quote .label {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quote .byline { color: var(--color-sandal); }
+
+.quote .quote-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-sm);
+}
+
+.quote a.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-accent);
+}

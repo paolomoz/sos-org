@@ -1,0 +1,223 @@
+/* cards — talks | news | grid | offerings | listing
+   (lifted from index-proposed.html §§ talks/happenings/articles,
+   meditation-learn-meditation-proposed.html § workshops,
+   news-proposed.html § news-listing + pagination).
+   Scoped `.cards …` — blockWrapperClass=none (never `.cards.block`). */
+
+/* section grounds: talks + offerings sit on Silence (white) */
+main .section:has(.cards.talks),
+main .section:has(.cards.offerings) { background: var(--color-surface); }
+
+/* ===== shared type roles ===== */
+.cards .section-head { margin-bottom: var(--spacing-xl); }
+
+.cards .section-head .label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cards .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.cards .title {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+.cards .byline { color: var(--color-sandal); }
+
+.cards .label.byline {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== card chrome (the One Shadow Rule) ===== */
+.cards .card {
+  background: var(--color-surface);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.cards .card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.cards .card-body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.cards a.card-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cards .clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cards .clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cards a.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-accent);
+}
+
+.cards p { margin: 0; }
+
+/* ===== talks — 2-up on white; cards on First Light ===== */
+.cards.talks .talks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.cards.talks .card { background: var(--color-bg); }
+
+.cards.talks .card img {
+  aspect-ratio: 1080 / 675;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===== news / grid — 3-up auto-fit ===== */
+.cards.news .card-grid,
+.cards.grid .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.cards.news .card-grid { margin-bottom: var(--spacing-xl); }
+
+.cards.news .card img,
+.cards.grid .card img {
+  aspect-ratio: 400 / 250;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===== offerings — whole-card photo anchors, centered head, 1000px rail ===== */
+.cards.offerings .section-head { text-align: center; }
+
+.cards.offerings .workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cards.offerings a.workshop-card { text-decoration: none; }
+
+.cards.offerings .workshop-card img {
+  aspect-ratio: 714 / 736;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===== listing — 2-up news archive + pagination ===== */
+.cards.listing .news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+
+.cards.listing .card img {
+  aspect-ratio: 1080 / 675;
+  object-fit: cover;
+  width: 100%;
+}
+
+.cards.listing .card .label { color: var(--color-sandal); }
+
+.cards.listing .news-date { font-size: var(--body-sm); }
+
+.cards .pagination { margin-top: var(--spacing-xl); }
+
+.cards .pagination ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.cards .page-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: background 0.2s var(--ease);
+}
+
+.cards a.page-num:hover {
+  background: rgb(4 58 91 / 8%);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cards .page-current {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.cards .page-word {
+  padding-inline: 20px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== responsive ===== */
+@media (width <= 900px) {
+  .cards.talks .talks-grid,
+  .cards.listing .news-grid { grid-template-columns: 1fr; }
+}

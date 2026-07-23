@@ -1,0 +1,140 @@
+/* insights — Spiritual Insights side-rail (lifted from index-proposed.html
+   § insights). Scoped `.insights …` — blockWrapperClass=none. */
+
+/* section ground: Silence (white) */
+main .section:has(.insights) { background: var(--color-surface); }
+
+.insights .section-head { margin-bottom: var(--spacing-xl); }
+
+.insights .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.insights .insights-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.insights blockquote {
+  margin: 0 0 var(--spacing-xl);
+  border-top: 3px solid var(--color-gold);
+  padding-top: var(--spacing-lg);
+}
+
+.insights blockquote p {
+  font-family: var(--heading-font-family);
+  font-style: italic;
+  font-size: var(--heading-md);
+  line-height: 1.4;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.insights blockquote cite { font-style: normal; }
+
+.insights .label {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.insights .byline { color: var(--color-sandal); }
+
+.insights .card {
+  background: var(--color-surface);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.insights .card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.insights .card img {
+  aspect-ratio: 714 / 417;
+  object-fit: cover;
+  width: 100%;
+}
+
+.insights .card-body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.insights .card-body .title {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+.insights a.card-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.insights .insight-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 3px solid var(--color-gold);
+}
+
+.insights .insight-list li { border-bottom: 1px solid rgb(109 95 43 / 25%); }
+
+.insights .insight-list a {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding-block: var(--spacing-md);
+  text-decoration: none;
+}
+
+.insights .insight-list a:hover .title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.insights .insight-list img {
+  width: 96px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-surface);
+  flex-shrink: 0;
+}
+
+.insights .insight-list .title {
+  font-weight: 600;
+  font-size: var(--body);
+  color: var(--color-accent);
+}
+
+.insights .insight-list .byline {
+  font-size: var(--body-sm);
+  display: block;
+}
+
+@media (width <= 1024px) {
+  .insights .insights-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}

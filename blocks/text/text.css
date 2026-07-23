@@ -1,0 +1,113 @@
+/* text — intro | prose | centered (lifted from index-proposed.html § intro,
+   spiritual-growth-proposed.html § article-section .prose, and
+   meditation-learn-meditation-proposed.html § opening).
+   Scoped `.text …` — blockWrapperClass=none. */
+
+/* ===== intro — evergreen centered statement (carries the page h1) ===== */
+.text.intro { text-align: center; }
+
+.text.intro .label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin-bottom: var(--spacing-md);
+}
+
+.text.intro h1 {
+  font-family: var(--heading-font-family);
+  font-weight: 400;
+  color: var(--color-accent);
+  font-size: clamp(2.5rem, 4.5vw, 3.4375rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  max-width: 22ch;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.text.intro p {
+  font-size: 20px;
+  max-width: 55ch;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.text.intro .intro-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.text.intro .intro-actions p { margin: 0; }
+
+.text.intro .intro-actions a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-accent);
+}
+
+/* ===== prose — article measure (72ch) ===== */
+.text.prose .prose,
+.text .prose {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.text .prose .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-lg);
+}
+
+.text .prose .kicker {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin-bottom: var(--spacing-xs);
+}
+
+.text .prose h3.title,
+.text .prose .title { margin: var(--spacing-xl) 0 var(--spacing-sm); }
+
+.text .prose blockquote {
+  margin: var(--spacing-xl) 0;
+  border-top: 3px solid var(--color-gold);
+  padding-top: var(--spacing-lg);
+}
+
+.text .prose blockquote p {
+  font-family: var(--heading-font-family);
+  font-style: italic;
+  font-size: var(--heading-md);
+  line-height: 1.4;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.text .prose blockquote cite { font-style: normal; }
+
+/* inline prose links: 44px hit area without disturbing the line box */
+.text .prose p > a {
+  padding-block: 9px;
+  margin-block: -9px;
+}
+
+/* ===== centered — the empathetic hook (62ch, 20px) ===== */
+.text.centered { text-align: center; }
+
+.text.centered .opening-body p {
+  max-width: 62ch;
+  margin-inline: auto;
+  font-size: 20px;
+}

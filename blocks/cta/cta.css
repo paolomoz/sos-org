@@ -1,0 +1,30 @@
+/* cta — cta-band (lifted from index-proposed.html § cta-band).
+   Scoped `.cta …` — blockWrapperClass=none. Section bg = page bg (First Light). */
+
+.cta { text-align: center; }
+
+.cta .wrap > p {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-md);
+  color: var(--color-accent);
+  max-width: 34ch;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.cta .cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.cta .cta-actions a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-accent);
+}

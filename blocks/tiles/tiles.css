@@ -1,0 +1,59 @@
+/* tiles — webinar circular tiles (lifted from index-proposed.html § webinars).
+   The Two Corners Rule: photo tiles are 50% (circles). Scoped `.tiles …`. */
+
+.tiles .section-head { margin-bottom: var(--spacing-xl); }
+
+.tiles .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.tiles .webinar-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  flex-wrap: wrap;
+}
+
+.tiles a.webinar-tile {
+  text-align: center;
+  text-decoration: none;
+  max-width: 240px;
+}
+
+.tiles .webinar-tile img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto var(--spacing-md);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.tiles a.webinar-tile:hover img {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.tiles .webinar-tile .label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin-bottom: var(--spacing-xs);
+}
+
+.tiles .webinar-tile .title {
+  display: block;
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+@media (width <= 640px) {
+  .tiles .webinar-grid { gap: var(--spacing-xl); }
+}

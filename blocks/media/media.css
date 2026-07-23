@@ -1,0 +1,102 @@
+/* media — video facades, single | grid (lifted from index-proposed.html
+   §§ featured-video / featured-videos). Scoped `.media …` — blockWrapperClass=none. */
+
+/* section ground: the videos grid sits on Silence (white) */
+main .section:has(.media.grid) { background: var(--color-surface); }
+
+.media .section-head { margin-bottom: var(--spacing-xl); }
+
+.media .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.media a.facade {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-surface);
+  background: linear-gradient(135deg, #043A5B 0%, #0A5178 100%);
+  text-decoration: none;
+  overflow: hidden;
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.media a.facade:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.media .facade-play {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 14%);
+  border: 2px solid var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s var(--ease);
+}
+
+.media a.facade:hover .facade-play { transform: scale(1.08); }
+
+.media .facade-play svg {
+  fill: #FFF;
+  margin-left: 4px;
+}
+
+.media .facade-title {
+  position: absolute;
+  left: var(--spacing-lg);
+  bottom: var(--spacing-md);
+  color: var(--color-surface);
+  font-weight: 600;
+  font-size: var(--body);
+}
+
+.media figure { margin: 0; }
+
+/* ===== single — featured facade, centered caption ===== */
+.media.single a.facade {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.media.single figcaption {
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.media.single figcaption.label {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.media.single figcaption.byline { color: var(--color-sandal); }
+
+/* ===== grid — 3-up captioned facades ===== */
+.media.grid .videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.media.grid a.facade { margin-bottom: var(--spacing-md); }
+
+.media.grid .title {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+}
+
+.media.grid figcaption p {
+  font-size: var(--body-sm);
+  color: #333;
+  margin: var(--spacing-sm) 0 0;
+}

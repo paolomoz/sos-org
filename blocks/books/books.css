@@ -1,0 +1,31 @@
+/* books — book-cover rail (lifted from index-proposed.html § books).
+   Scoped `.books …` — blockWrapperClass=none. Section bg = page bg. */
+
+.books .section-head { margin-bottom: var(--spacing-xl); }
+
+.books .headline {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+}
+
+.books .books-rail {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.books .books-rail figure { margin: 0; }
+
+.books .books-rail img {
+  width: 170px;
+  aspect-ratio: 324 / 499;
+  object-fit: cover;
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+}
+
+@media (width <= 640px) {
+  .books .books-rail img { width: 140px; }
+}

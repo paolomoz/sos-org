@@ -17,3 +17,7 @@ helix-importer-ui
 .env.*
 qa/
 samples/
+
+.env
+.env.*
+qa/
