@@ -197,6 +197,14 @@ const handleRequest = async (request, env, ctx) => {
   });
   resp = new Response(resp.body, resp);
   const ct = resp.headers.get('content-type') || '';
+  if (/^\/sitemap[^/]*\.xml$/.test(url.pathname) && resp.status === 200) {
+    const originUrl = new URL(url.pathname, `https://${env.ORIGIN_HOSTNAME}`);
+    originUrl.searchParams.set('cb', Date.now().toString());
+    const fresh = await fetch(originUrl, { cf: { cacheTtl: 0, cacheEverything: false } });
+    const xml = await (fresh.status === 200 ? fresh : resp).text();
+    const rewritten = xml.replace(/https:\/\/[a-z0-9-]+--sos-org--paolomoz\.aem\.(live|page)/g, `https://${request.headers.get('host')}`);
+    return new Response(rewritten, { status: 200, headers: { 'content-type': 'application/xml' } });
+  }
   if (ct.includes('text/html')) {
     const LOCALES = ['de', 'el', 'es', 'fr', 'hi', 'hu', 'it', 'ja', 'nl'];
     const seg = url.pathname.split('/')[1];

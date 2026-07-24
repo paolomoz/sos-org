@@ -10,4 +10,4 @@ routes = [
 [vars]
 ORIGIN_HOSTNAME = "main--sos-org--paolomoz.aem.live"
 PUSH_INVALIDATION = "disabled"
-ROBOTS = "disallow"
+ROBOTS = "allow"
