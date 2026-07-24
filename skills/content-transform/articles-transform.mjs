@@ -174,7 +174,10 @@ function transformPage(slug, row) {
     flushFaq();
     if (!pending.length) return;
     const cell = pending.map((n) => n.html).join('\n');
-    units.push({ type: 'block', name: 'text prose', rows: [[cell]], src: pending.map((n) => n.src) });
+    units.push({
+      type: 'block', name: 'text prose', rows: [[cell]],
+      src: pending.flatMap((n) => (Array.isArray(n.src) ? n.src : [n.src])),
+    });
     pending = [];
   };
   const pushFlow = (html, src) => { if (html) pending.push({ html, src }); };
@@ -235,8 +238,23 @@ function transformPage(slug, row) {
     pushFlow(`<h${lvl}>${inner || esc(text)}</h${lvl}>`, el);
   };
 
+  const INLINE = new Set(['A', 'STRONG', 'EM', 'B', 'I', 'SPAN', 'BR', 'IMG', 'U', 'CODE', 'SUP', 'SUB']);
   const processInner = (inner) => {
-    for (const child of [...inner.children]) {
+    // bare text nodes / loose inline runs (classic-template posts put prose
+    // directly in et_pb_text_inner with no <p>) buffer into one paragraph
+    let buf = [];
+    const flushBuf = () => {
+      if (!buf.length) return;
+      const html = buf.map((b) => b.html).join('').trim();
+      const srcNodes = buf.map((b) => b.node);
+      buf = [];
+      if (norm(html.replace(/<[^>]+>/g, '')) || /<img/.test(html)) pushFlow(`<p>${html}</p>`, srcNodes);
+    };
+    for (const child of [...inner.childNodes]) {
+      if (child.nodeType === 3) { if (norm(child.textContent)) buf.push({ html: esc(child.textContent), node: child }); continue; }
+      if (child.nodeType !== 1) continue;
+      if (INLINE.has(child.tagName)) { const h = cleanHtml(child, page, doc); if (h) buf.push({ html: h, node: child }); continue; }
+      flushBuf();
       const ifr = child.tagName === 'IFRAME' ? [child] : [...child.querySelectorAll('iframe')];
       if (ifr.length) {
         // strip iframes out, then process any remaining text in the container
@@ -253,6 +271,7 @@ function transformPage(slug, row) {
       const html = cleanHtml(child, page, doc);
       if (html) pushFlow(html, child);
     }
+    flushBuf();
   };
 
   const handleBlogGrid = (mod) => {
@@ -264,7 +283,7 @@ function transformPage(slug, row) {
       if (pm && !pm[2].includes('<h')) {
         pending.pop();
         const lv = pm[1] === '1' ? '2' : pm[1];
-        headUnit = { type: 'default', html: `<h${lv}>${pm[2]}</h${lv}>`, src: [lastNode.src] };
+        headUnit = { type: 'default', html: `<h${lv}>${pm[2]}</h${lv}>`, src: Array.isArray(lastNode.src) ? lastNode.src : [lastNode.src] };
       }
     }
     flushText();
@@ -316,6 +335,26 @@ function transformPage(slug, row) {
     faqSrc.push(t);
   };
 
+  // ---- classic-template post chrome: h1 + featured image live in
+  // article .et_post_meta_wrapper, outside the builder sections ----
+  const metaWrap = doc.querySelector('.et_post_meta_wrapper');
+  if (metaWrap) {
+    for (const child of [...metaWrap.children]) {
+      if (/^H[1-6]$/.test(child.tagName)) { handleHeading(child); continue; }
+      if (/post-meta/.test(child.getAttribute('class') || '')) {
+        pageNotes.push('WP post-meta line dropped (date/category template furniture)');
+        continue;
+      }
+      if (child.tagName === 'IMG') {
+        const src = mapImg(child.getAttribute('src'), page);
+        if (src) pushFlow(`<p><img src="${src}" alt="${escAttr(child.getAttribute('alt') || '')}"></p>`, child);
+        continue;
+      }
+      const html = cleanHtml(child, page, doc);
+      if (html) pushFlow(html, child);
+    }
+  }
+
   // ---- walk ----
   for (const sec of sections) {
     // chrome: footer-column section (mirrors fragments/footer.html)
@@ -362,10 +401,14 @@ function transformPage(slug, row) {
   let h1Text = seenH1 && seenH1.text;
   let h1Derived = false;
   if (!h1Text) {
-    h1Text = norm((rec.title || '').replace(/\s*[|–—-]\s*Science of Spirituality.*$/i, ''))
+    // prefer the crawl record's VISIBLE h1 (captured outside the article
+    // region on some templates) over the <title> tag
+    const recH1 = (rec.headings || []).find((h) => h.tag === 'h1' && norm(h.text));
+    h1Text = (recH1 && norm(recH1.text))
+      || norm((rec.title || '').replace(/\s*[|–—-]\s*Science of Spirituality.*$/i, ''))
       || norm(rec.og?.title || '') || row.path.split('/').pop();
     h1Derived = true;
-    pageNotes.push(`no h1 in source — derived from <title>: "${h1Text}"`);
+    pageNotes.push(`no h1 in article region — derived from ${recH1 ? 'captured visible h1' : '<title>'}: "${h1Text}"`);
   }
   const pageHead = { type: 'block', name: 'page-head', rows: [[`<h1>${esc(h1Text)}</h1>`]], src: seenH1 ? [seenH1.src] : [] };
   units.unshift(pageHead);
