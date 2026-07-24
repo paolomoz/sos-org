@@ -1,0 +1,13 @@
+name = "sos-stardust-cdn"
+main = "index.mjs"
+compatibility_date = "2026-07-01"
+account_id = "2760892a9c26d2a6fd962120dfda1496"
+
+routes = [
+  { pattern = "sos.stardust.style", custom_domain = true }
+]
+
+[vars]
+ORIGIN_HOSTNAME = "main--sos-org--paolomoz.aem.live"
+PUSH_INVALIDATION = "disabled"
+ROBOTS = "disallow"
