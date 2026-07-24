@@ -58,6 +58,8 @@
 .text .prose {
   max-width: 72ch;
   margin-inline: auto;
+  /* bare-URL reference links must wrap on narrow viewports (QA: horizontal-overflow) */
+  overflow-wrap: anywhere;
 }
 
 .text .prose .headline {
