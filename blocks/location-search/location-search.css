@@ -1,0 +1,172 @@
+/*
+ * location-search — interactive center/program finder.
+ * Brand tokens only; controls >= 44px; :focus-visible on every control.
+ */
+
+.location-search .wrap {
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+.location-search .ls-intro h2 {
+  font-weight: 600;
+  font-size: var(--heading-lg);
+  color: var(--color-accent);
+  margin: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.location-search .ls-intro h3 {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+  margin: var(--spacing-lg) 0 var(--spacing-xs);
+}
+
+.location-search .ls-intro p { margin-bottom: var(--spacing-md); }
+
+.location-search .ls-controls { margin-top: var(--spacing-lg); }
+
+.location-search .ls-label {
+  display: block;
+  font-weight: 600;
+  font-size: var(--body-sm);
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-xs);
+}
+
+.location-search .ls-controls-row {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.location-search input[type="search"],
+.location-search select {
+  background: var(--color-surface);
+  color: var(--color-fg);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 12px 16px;
+  min-height: 44px;
+  border: 1px solid rgb(4 58 91 / 40%);
+  border-radius: var(--radius);
+}
+
+.location-search input[type="search"] {
+  flex: 1 1 260px;
+}
+
+.location-search select { flex: 0 1 auto; }
+
+.location-search input[type="search"]:focus-visible,
+.location-search select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+.location-search button.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 32px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-gold);
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.location-search button.btn:hover {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.location-search button.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.location-search .ls-status {
+  margin-top: var(--spacing-lg);
+  font-weight: 600;
+  color: var(--color-sandal);
+  min-height: 1.65em;
+}
+
+.location-search .ls-results {
+  list-style: none;
+  margin: var(--spacing-lg) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.location-search .ls-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.location-search .ls-card-type {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sandal);
+  margin: 0;
+}
+
+.location-search .ls-card-name {
+  font-weight: 600;
+  font-size: var(--heading-sm);
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.location-search .ls-card-addr,
+.location-search .ls-card-timings {
+  font-size: var(--body-sm);
+  margin: 0;
+}
+
+.location-search .ls-card-distance {
+  font-size: var(--body-sm);
+  font-weight: 600;
+  color: var(--color-sandal);
+  margin: 0;
+}
+
+.location-search .ls-card .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.location-search .ls-card .text-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (width <= 640px) {
+  .location-search .ls-controls-row { flex-direction: column; }
+
+  .location-search select { width: 100%; }
+}

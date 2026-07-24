@@ -33,6 +33,22 @@
 
 .events-list .event-card .byline { color: var(--color-sandal); }
 
+.events-list .event-card .event-date {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.events-list .event-card .title { margin: 0; }
+
+.events-list .event-card .event-place,
+.events-list .event-card .event-timings {
+  font-size: var(--body-sm);
+  margin: 0;
+}
+
 .events-list .event-link-hint,
 .events-list .text-link {
   display: inline-flex;
